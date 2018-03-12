@@ -69,7 +69,7 @@
 }
 
 - (NSString *)trendView:(LYTrendView *)trendView titleForSectionY:(NSUInteger)sectionY {
-    return [NSString stringWithFormat:@"%.2f",sectionY * 100.0];
+    return [NSString stringWithFormat:@"%.2f",sectionY * trendView.sectionYValue];
 }
 - (NSString *)trendView:(LYTrendView *)trendView titleForSectionX:(NSUInteger)sectionX {
     if (sectionX  % 2) {
@@ -103,8 +103,8 @@
         line.lineCapStyle = kCGLineCapRound;
         line.lineJoinStyle = kCGLineJoinRound;
         line.dotRadii = 3.0f;
-        line.dotColor = [UIColor redColor];
-        line.smooth = YES;
+        line.dotColor = (array.count % 2 ) ? [UIColor redColor] : [UIColor darkGrayColor];
+        line.smooth = (array.count % 2 == 0);
         [array addObject:line];
         
     }

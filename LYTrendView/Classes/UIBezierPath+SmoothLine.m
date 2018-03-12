@@ -37,7 +37,7 @@ static CGPoint controlPoint(CGPoint,CGPoint);
     return lastP ? [lastP CGPointValue] : CGPointZero;
 }
 #pragma mark  add smooth line method
-- (void)addSmoothLineToPoint:(CGPoint)toPoint {
+- (void)ly_addSmoothLineToPoint:(CGPoint)toPoint {
     CGPoint fromP = [self lastPoint];
     CGPoint minP = minPoint(fromP, toPoint);
     

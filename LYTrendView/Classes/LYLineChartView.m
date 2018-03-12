@@ -14,9 +14,13 @@
 typedef void(^LYDrawingTitleBlock)(void);
 
 
+@implementation LYChartLine
+@end
+
+
+
 
 @interface LYLineChartView ()
-
 /** <#des#> */
 @property (nonatomic,strong) NSMutableArray <LYChartLine *>* chartLines;
 
@@ -27,10 +31,11 @@ typedef void(^LYDrawingTitleBlock)(void);
 @implementation LYLineChartView
 
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+    
+    // Drawing frame /> 绘制主体框架
     [super drawRect:rect];
     
-   
+   // Drawing charts />  绘制折线
     [_chartLines enumerateObjectsUsingBlock:^(LYChartLine * _Nonnull line, NSUInteger idx, BOOL * _Nonnull stop) {
         UIBezierPath *path = [UIBezierPath bezierPath];
         
@@ -45,7 +50,7 @@ typedef void(^LYDrawingTitleBlock)(void);
             
             //idx ? [path addLineToPoint:p] :  [path moveToPoint:p];
             if (idx) {
-                line.smooth ? [path addSmoothLineToPoint:p] : [path addLineToPoint:p];
+                line.smooth ? [path ly_addSmoothLineToPoint:p] : [path addLineToPoint:p];
             }else {
                 [path moveToPoint:p];
             }

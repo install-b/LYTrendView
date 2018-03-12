@@ -15,5 +15,5 @@
 
  @param toPoint 终点
  */
-- (void)addSmoothLineToPoint:(CGPoint)toPoint;
+- (void)ly_addSmoothLineToPoint:(CGPoint)toPoint;
 @end
