@@ -1,0 +1,206 @@
+sessionChartData : {
+    name : 访客数,
+    yesterday : {
+        title : 昨日历史数据,
+        tdate : [
+                 {
+                 num : 0,
+                 name : 00
+                 },
+                 {
+                 num : 0,
+                 name : 01
+                 },
+                 {
+                 num : 0,
+                 name : 02
+                 },
+                 {
+                 num : 0,
+                 name : 03
+                 },
+                 {
+                 num : 0,
+                 name : 04
+                 },
+                 {
+                 num : 0,
+                 name : 05
+                 },
+                 {
+                 num : 0,
+                 name : 06
+                 },
+                 {
+                 num : 0,
+                 name : 07
+                 },
+                 {
+                 num : 0,
+                 name : 08
+                 },
+                 {
+                 num : 0,
+                 name : 09
+                 },
+                 {
+                 num : 0,
+                 name : 10
+                 },
+                 {
+                 num : 0,
+                 name : 11
+                 },
+                 {
+                 num : 0,
+                 name : 12
+                 },
+                 {
+                 num : 0,
+                 name : 13
+                 },
+                 {
+                 num : 0,
+                 name : 14
+                 },
+                 {
+                 num : 0,
+                 name : 15
+                 },
+                 {
+                 num : 0,
+                 name : 16
+                 },
+                 {
+                 num : 0,
+                 name : 17
+                 },
+                 {
+                 num : 0,
+                 name : 18
+                 },
+                 {
+                 num : 0,
+                 name : 19
+                 },
+                 {
+                 num : 0,
+                 name : 20
+                 },
+                 {
+                 num : 0,
+                 name : 21
+                 },
+                 {
+                 num : 0,
+                 name : 22
+                 },
+                 {
+                 num : 0,
+                 name : 23
+                 }
+                 ]
+    },
+    today : {
+        title : 今天实时数据,
+        date : [
+                {
+                num : 0,
+                name : 00
+                },
+                {
+                num : 0,
+                name : 01
+                },
+                {
+                num : 0,
+                name : 02
+                },
+                {
+                num : 0,
+                name : 03
+                },
+                {
+                num : 0,
+                name : 04
+                },
+                {
+                num : 0,
+                name : 05
+                },
+                {
+                num : 0,
+                name : 06
+                },
+                {
+                num : 0,
+                name : 07
+                },
+                {
+                num : 0,
+                name : 08
+                },
+                {
+                num : 0,
+                name : 09
+                },
+                {
+                num : 2,
+                name : 10
+                },
+                {
+                num : 1,
+                name : 11
+                },
+                {
+                num : 0,
+                name : 12
+                },
+                {
+                num : 0,
+                name : 13
+                },
+                {
+                num : 1,
+                name : 14
+                },
+                {
+                num : 0,
+                name : 15
+                },
+                {
+                num : 0,
+                name : 16
+                },
+                {
+                num : 0,
+                name : 17
+                },
+                {
+                num : 0,
+                name : 18
+                },
+                {
+                num : 0,
+                name : 19
+                },
+                {
+                num : 0,
+                name : 20
+                },
+                {
+                num : 0,
+                name : 21
+                },
+                {
+                num : 0,
+                name : 22
+                },
+                {
+                num : 0,
+                name : 23
+                }
+                ]
+    }
+}
+

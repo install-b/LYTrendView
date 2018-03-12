@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A7117C451E9CDBCE00F8FEEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C441E9CDBCE00F8FEEB /* main.m */; };
+		A7117C481E9CDBCE00F8FEEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C471E9CDBCE00F8FEEB /* AppDelegate.m */; };
+		A7117C4B1E9CDBCE00F8FEEB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C4A1E9CDBCE00F8FEEB /* ViewController.m */; };
+		A7117C4E1E9CDBCE00F8FEEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7117C4C1E9CDBCE00F8FEEB /* Main.storyboard */; };
+		A7117C501E9CDBCE00F8FEEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */; };
+		A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */; };
+		A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */; };
+		A735A9061EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */; };
+		A7B98120205665BA0007F315 /* source.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A7B9811F205665560007F315 /* source.geojson */; };
+		A7B9812A205666100007F315 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98123205666100007F315 /* LYTrendView.m */; };
+		A7B9812B205666100007F315 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98125205666100007F315 /* LYColumnView.m */; };
+		A7B9812C205666100007F315 /* LYTendMath.c in Sources */ = {isa = PBXBuildFile; fileRef = A7B98126205666100007F315 /* LYTendMath.c */; };
+		A7B9812D205666100007F315 /* LYTrendAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98128205666100007F315 /* LYTrendAnimateView.m */; };
+		A7B98130205666FD0007F315 /* LYLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B9812F205666FD0007F315 /* LYLineChartView.m */; };
+		A7B98133205667420007F315 /* LYChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98132205667420007F315 /* LYChartLine.m */; };
+		A7B9813620566E510007F315 /* NSString+LYSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B9813420566E500007F315 /* NSString+LYSize.m */; };
+		A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E14FF01E9F692B005467B5 /* LYPoint.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A7117C401E9CDBCE00F8FEEB /* LYTrendView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYTrendView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7117C441E9CDBCE00F8FEEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A7117C461E9CDBCE00F8FEEB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A7117C471E9CDBCE00F8FEEB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A7117C491E9CDBCE00F8FEEB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A7117C4A1E9CDBCE00F8FEEB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A7117C4D1E9CDBCE00F8FEEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7117C521E9CDBCE00F8FEEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A7117C541E9CDBCE00F8FEEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7355CFA1F6144A2000F5382 /* LYTestTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTestTrendView.h; sourceTree = "<group>"; };
+		A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTestTrendView.m; sourceTree = "<group>"; };
+		A735A9041EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+SmoothLine.h"; sourceTree = "<group>"; };
+		A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+SmoothLine.m"; sourceTree = "<group>"; };
+		A78D59B71E9DCA8F006FCF80 /* LYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPoint.h; sourceTree = "<group>"; };
+		A7B9811F205665560007F315 /* source.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = source.geojson; sourceTree = "<group>"; };
+		A7B98122205666100007F315 /* LYTendMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTendMath.h; sourceTree = "<group>"; };
+		A7B98123205666100007F315 /* LYTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendView.m; sourceTree = "<group>"; };
+		A7B98124205666100007F315 /* LYTrendAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendAnimateView.h; sourceTree = "<group>"; };
+		A7B98125205666100007F315 /* LYColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYColumnView.m; sourceTree = "<group>"; };
+		A7B98126205666100007F315 /* LYTendMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LYTendMath.c; sourceTree = "<group>"; };
+		A7B98127205666100007F315 /* LYTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendView.h; sourceTree = "<group>"; };
+		A7B98128205666100007F315 /* LYTrendAnimateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendAnimateView.m; sourceTree = "<group>"; };
+		A7B98129205666100007F315 /* LYColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYColumnView.h; sourceTree = "<group>"; };
+		A7B9812E205666FD0007F315 /* LYLineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYLineChartView.h; sourceTree = "<group>"; };
+		A7B9812F205666FD0007F315 /* LYLineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYLineChartView.m; sourceTree = "<group>"; };
+		A7B98131205667420007F315 /* LYChartLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYChartLine.h; sourceTree = "<group>"; };
+		A7B98132205667420007F315 /* LYChartLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYChartLine.m; sourceTree = "<group>"; };
+		A7B9813420566E500007F315 /* NSString+LYSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LYSize.m"; sourceTree = "<group>"; };
+		A7B9813520566E500007F315 /* NSString+LYSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LYSize.h"; sourceTree = "<group>"; };
+		A7E14FF01E9F692B005467B5 /* LYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPoint.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7117C3D1E9CDBCE00F8FEEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A7117C371E9CDBCE00F8FEEB = {
+			isa = PBXGroup;
+			children = (
+				A7117C421E9CDBCE00F8FEEB /* LYTrendView */,
+				A7117C411E9CDBCE00F8FEEB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A7117C411E9CDBCE00F8FEEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7117C401E9CDBCE00F8FEEB /* LYTrendView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7117C421E9CDBCE00F8FEEB /* LYTrendView */ = {
+			isa = PBXGroup;
+			children = (
+				A7B98121205666100007F315 /* Classes */,
+				A7B981372056754C0007F315 /* ChartViewDemo */,
+				A7B9811F205665560007F315 /* source.geojson */,
+				A7117C431E9CDBCE00F8FEEB /* Supporting Files */,
+			);
+			path = LYTrendView;
+			sourceTree = "<group>";
+		};
+		A7117C431E9CDBCE00F8FEEB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7117C461E9CDBCE00F8FEEB /* AppDelegate.h */,
+				A7117C471E9CDBCE00F8FEEB /* AppDelegate.m */,
+				A7117C4C1E9CDBCE00F8FEEB /* Main.storyboard */,
+				A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */,
+				A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */,
+				A7117C541E9CDBCE00F8FEEB /* Info.plist */,
+				A7117C441E9CDBCE00F8FEEB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A7B98121205666100007F315 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A7B98122205666100007F315 /* LYTendMath.h */,
+				A7B98126205666100007F315 /* LYTendMath.c */,
+				A735A9041EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.h */,
+				A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */,
+				A7B9813520566E500007F315 /* NSString+LYSize.h */,
+				A7B9813420566E500007F315 /* NSString+LYSize.m */,
+				A7B98127205666100007F315 /* LYTrendView.h */,
+				A7B98123205666100007F315 /* LYTrendView.m */,
+				A7B98124205666100007F315 /* LYTrendAnimateView.h */,
+				A7B98128205666100007F315 /* LYTrendAnimateView.m */,
+				A7B98129205666100007F315 /* LYColumnView.h */,
+				A7B98125205666100007F315 /* LYColumnView.m */,
+				A7B9812E205666FD0007F315 /* LYLineChartView.h */,
+				A7B9812F205666FD0007F315 /* LYLineChartView.m */,
+				A7B98131205667420007F315 /* LYChartLine.h */,
+				A7B98132205667420007F315 /* LYChartLine.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A7B981372056754C0007F315 /* ChartViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				A7117C491E9CDBCE00F8FEEB /* ViewController.h */,
+				A7117C4A1E9CDBCE00F8FEEB /* ViewController.m */,
+				A78D59B71E9DCA8F006FCF80 /* LYPoint.h */,
+				A7E14FF01E9F692B005467B5 /* LYPoint.m */,
+				A7355CFA1F6144A2000F5382 /* LYTestTrendView.h */,
+				A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */,
+			);
+			path = ChartViewDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A7117C3F1E9CDBCE00F8FEEB /* LYTrendView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7117C571E9CDBCE00F8FEEB /* Build configuration list for PBXNativeTarget "LYTrendView" */;
+			buildPhases = (
+				A7117C3C1E9CDBCE00F8FEEB /* Sources */,
+				A7117C3D1E9CDBCE00F8FEEB /* Frameworks */,
+				A7117C3E1E9CDBCE00F8FEEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LYTrendView;
+			productName = LYTrendView;
+			productReference = A7117C401E9CDBCE00F8FEEB /* LYTrendView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7117C381E9CDBCE00F8FEEB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Shangen Zhang";
+				TargetAttributes = {
+					A7117C3F1E9CDBCE00F8FEEB = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = WZ22KTPCG8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A7117C3B1E9CDBCE00F8FEEB /* Build configuration list for PBXProject "LYTrendView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A7117C371E9CDBCE00F8FEEB;
+			productRefGroup = A7117C411E9CDBCE00F8FEEB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7117C3F1E9CDBCE00F8FEEB /* LYTrendView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7117C3E1E9CDBCE00F8FEEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */,
+				A7B98120205665BA0007F315 /* source.geojson in Resources */,
+				A7117C501E9CDBCE00F8FEEB /* Assets.xcassets in Resources */,
+				A7117C4E1E9CDBCE00F8FEEB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7117C3C1E9CDBCE00F8FEEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7117C4B1E9CDBCE00F8FEEB /* ViewController.m in Sources */,
+				A7B98133205667420007F315 /* LYChartLine.m in Sources */,
+				A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */,
+				A7B9812A205666100007F315 /* LYTrendView.m in Sources */,
+				A7B9812D205666100007F315 /* LYTrendAnimateView.m in Sources */,
+				A735A9061EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m in Sources */,
+				A7B9813620566E510007F315 /* NSString+LYSize.m in Sources */,
+				A7B98130205666FD0007F315 /* LYLineChartView.m in Sources */,
+				A7117C481E9CDBCE00F8FEEB /* AppDelegate.m in Sources */,
+				A7B9812B205666100007F315 /* LYColumnView.m in Sources */,
+				A7B9812C205666100007F315 /* LYTendMath.c in Sources */,
+				A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */,
+				A7117C451E9CDBCE00F8FEEB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A7117C4C1E9CDBCE00F8FEEB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7117C4D1E9CDBCE00F8FEEB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7117C521E9CDBCE00F8FEEB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7117C551E9CDBCE00F8FEEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7117C561E9CDBCE00F8FEEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7117C581E9CDBCE00F8FEEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WZ22KTPCG8;
+				INFOPLIST_FILE = LYTrendView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hhly.LYTrendView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7117C591E9CDBCE00F8FEEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WZ22KTPCG8;
+				INFOPLIST_FILE = LYTrendView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hhly.LYTrendView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7117C3B1E9CDBCE00F8FEEB /* Build configuration list for PBXProject "LYTrendView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7117C551E9CDBCE00F8FEEB /* Debug */,
+				A7117C561E9CDBCE00F8FEEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7117C571E9CDBCE00F8FEEB /* Build configuration list for PBXNativeTarget "LYTrendView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7117C581E9CDBCE00F8FEEB /* Debug */,
+				A7117C591E9CDBCE00F8FEEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A7117C381E9CDBCE00F8FEEB /* Project object */;
+}
