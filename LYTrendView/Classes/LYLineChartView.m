@@ -163,7 +163,7 @@ static NSString *dotTitle(id<LYChartLinePointProtocol>point,NSString *formate) {
     
     NSRange rangY = [formate rangeOfString:@"yy"];
     if (rangY.length) {
-        return [formate stringByReplacingCharactersInRange:rangY withString:[NSString stringWithFormat:@"%.2f",point.sectionValueX]];
+        return [formate stringByReplacingCharactersInRange:rangY withString:[NSString stringWithFormat:@"%.2f",point.sectionValueY]];
     }
     return formate;
     

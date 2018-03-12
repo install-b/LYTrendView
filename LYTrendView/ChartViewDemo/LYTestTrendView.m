@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor yellowColor];
-        self.contentInsets = UIEdgeInsetsMake(10, 5, 5, 10);
+        self.contentInsets = UIEdgeInsetsMake(10, 5, 10, 5);
         self.insetsBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
         self.axesXColor = [UIColor orangeColor];
         self.axesYColor = [UIColor cyanColor];

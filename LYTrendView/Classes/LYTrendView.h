@@ -20,6 +20,8 @@ typedef NS_ENUM(NSInteger,LYColumnValueType) {
     LYColumnValueTypeZ,
 };
 
+typedef double LYTrendValue;
+
 
 @protocol LYTrendViewDelegate;
 
@@ -129,6 +131,18 @@ typedef NS_ENUM(NSInteger,LYColumnValueType) {
 - (CGFloat)sectionZValueFormPointX:(CGFloat)py;
 
 @end
+
+@interface LYTrendView (AutoAdjustSectionValue)
+
+- (void)autoAdjustSectionYValueWithMaxValue:(LYTrendValue)value;
+
+- (void)autoAdjustSectionZValueWithMaxValue:(LYTrendValue)value;
+
+- (void)autoAdjustSectionXValueWithMaxValue:(LYTrendValue)value;
+@end
+
+
+
 
 
 @protocol LYTrendViewDelegate <NSObject>

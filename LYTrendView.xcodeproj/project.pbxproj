@@ -15,7 +15,6 @@
 		A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */; };
 		A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */; };
 		A735A9061EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */; };
-		A7B98120205665BA0007F315 /* source.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A7B9811F205665560007F315 /* source.geojson */; };
 		A7B9812A205666100007F315 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98123205666100007F315 /* LYTrendView.m */; };
 		A7B9812B205666100007F315 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98125205666100007F315 /* LYColumnView.m */; };
 		A7B9812C205666100007F315 /* LYTendMath.c in Sources */ = {isa = PBXBuildFile; fileRef = A7B98126205666100007F315 /* LYTendMath.c */; };
@@ -42,7 +41,6 @@
 		A735A9041EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+SmoothLine.h"; sourceTree = "<group>"; };
 		A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+SmoothLine.m"; sourceTree = "<group>"; };
 		A78D59B71E9DCA8F006FCF80 /* LYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPoint.h; sourceTree = "<group>"; };
-		A7B9811F205665560007F315 /* source.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = source.geojson; sourceTree = "<group>"; };
 		A7B98122205666100007F315 /* LYTendMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTendMath.h; sourceTree = "<group>"; };
 		A7B98123205666100007F315 /* LYTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendView.m; sourceTree = "<group>"; };
 		A7B98124205666100007F315 /* LYTrendAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendAnimateView.h; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			children = (
 				A7B98121205666100007F315 /* Classes */,
 				A7B981372056754C0007F315 /* ChartViewDemo */,
-				A7B9811F205665560007F315 /* source.geojson */,
 				A7117C431E9CDBCE00F8FEEB /* Supporting Files */,
 			);
 			path = LYTrendView;
@@ -208,7 +205,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */,
-				A7B98120205665BA0007F315 /* source.geojson in Resources */,
 				A7117C501E9CDBCE00F8FEEB /* Assets.xcassets in Resources */,
 				A7117C4E1E9CDBCE00F8FEEB /* Main.storyboard in Resources */,
 			);

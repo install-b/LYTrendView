@@ -8,6 +8,7 @@
 
 #import "LYTrendView.h"
 #import "NSString+LYSize.h"
+#import "LYTendMath.h"
 
 #define dotTitleMargin 3.0f
 
@@ -442,5 +443,23 @@ typedef void(^DrawingTitleBlock)(void);
 }
 - (CGFloat)sectionZValueFormPointX:(CGFloat)py {
     return (self.originalPoint.y - py) * self.sectionZValue / self.sectionZWidth;
+}
+@end
+
+@implementation LYTrendView (AutoAdjustSectionValue)
+- (void)autoAdjustSectionYValueWithMaxValue:(LYTrendValue)value {
+    int sectionYCount = (int)[self.delegate numberOfSectionYForTrendView:self];
+    
+    self.sectionYValue = ly_fixDoubleValueToInterValue(value, sectionYCount,0.3,NULL,NULL);
+}
+- (void)autoAdjustSectionZValueWithMaxValue:(LYTrendValue)value {
+    int sectionZCount = (int)[self.delegate numberOfSectionZForTrendView:self];
+    
+    self.sectionZValue = ly_fixDoubleValueToInterValue(value, sectionZCount,0.3,NULL,NULL);
+}
+- (void)autoAdjustSectionXValueWithMaxValue:(LYTrendValue)value {
+    int sectionXCount = (int)[self.delegate numberOfSectionXForTrendView:self];
+    
+    self.sectionXValue = ly_fixDoubleValueToInterValue(value, sectionXCount,0,NULL,NULL);
 }
 @end

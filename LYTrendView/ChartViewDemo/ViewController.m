@@ -46,10 +46,11 @@
 - (void)trendLineClick {
     static BOOL didAddLines = NO;
     if (didAddLines) {
-        self.trendView.trendBackGroundColor = [UIColor colorWithWhite:0 alpha:1];
+        self.trendView.trendBackGroundColor = [UIColor greenColor];
         return;
     }
     [self.trendView addChartLines:[self lines] withAnimate:YES];
+    didAddLines = YES;
 }
 
 #pragma mark -  LYTrendViewDelegate
@@ -109,6 +110,9 @@
     }
     return array;
 }
+
+
+
 
 - (id)dataSource {
     
