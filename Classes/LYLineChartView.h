@@ -86,4 +86,11 @@ typedef NS_ENUM(NSUInteger,LYDotPosition) {
  delete all trend lines
  */
 - (void)removeChartLines;
+
+
+/**
+ show animation for line chart view
+    -- it can call viewDidAppear or app did ResignActive
+ */
+- (void)restartAnimateForCharts;
 @end
