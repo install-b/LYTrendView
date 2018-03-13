@@ -21,9 +21,10 @@ typedef void(^LYDrawingTitleBlock)(void);
 
 
 @interface LYLineChartView ()
-/** <#des#> */
+/** 曲线 */
 @property (nonatomic,strong) NSMutableArray <LYChartLine *>* chartLines;
-
+/** 是否处于animate 状态 */
+@property(nonatomic,assign,getter=isBeginAnimate) BOOL beginAnimate;
 @end
 
 
@@ -107,19 +108,92 @@ typedef void(^LYDrawingTitleBlock)(void);
     
 }
 
+#define animateDuration 2.5f
 - (void)addChartLines:(NSArray<LYChartLine *> *)lines withAnimate:(BOOL)animate {
     [self.chartLines addObjectsFromArray:lines];
-    // begin animate
+    if (self.isBeginAnimate == YES) {
+        return;
+    }
     
-    [self setNeedsDisplay];
+    // begin animate
+    if (animate) {
+        self.beginAnimate = YES;
+        NSMutableArray <CALayer *>* animateLayers = [NSMutableArray array];
+        [lines enumerateObjectsUsingBlock:^(LYChartLine * _Nonnull line, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIBezierPath *path = [UIBezierPath bezierPath];
+            
+            [line.pointArray enumerateObjectsUsingBlock:^(id<LYChartLinePointProtocol>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                // value point transform to view point
+                CGPoint p = [self tranferScreenPointWithValuePoint:CGPointMake(obj.sectionValueX, obj.sectionValueY)valueType:LYColumnValueTypeY];
+                
+                //idx ? [path addLineToPoint:p] :  [path moveToPoint:p];
+                if (idx) {
+                    line.smooth ? [path ly_addSmoothLineToPoint:p] : [path addLineToPoint:p];
+                }else {
+                    [path moveToPoint:p];
+                }
+            }];
+            CAShapeLayer  *animLayer = [CAShapeLayer layer];
+            animLayer.path = path.CGPath;
+            animLayer.lineWidth = line.borderWidth;
+            if (line.lineCapStyle) {
+                path.lineCapStyle = line.lineCapStyle;
+            }
+            if (line.lineJoinStyle) {
+                path.lineJoinStyle = line.lineJoinStyle;
+            }else {
+                path.miterLimit = line.miterLimit;
+            }
+            animLayer.strokeColor = line.borderColor.CGColor;
+            
+            animLayer.fillColor = [UIColor clearColor].CGColor;
+            
+            [self.layer addSublayer:animLayer];
+            [animateLayers addObject:animLayer];
+            
+            animLayer.strokeStart = 0.f;   // 设置起点为 0
+            animLayer.strokeEnd = 0.f;     // 设置终点为 0
+            
+            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+            animation.duration = animateDuration;   // 持续时间
+            animation.fromValue = @(0); // 从 0 开始
+            animation.toValue = @(1);   // 到 1 结束
+            // 保持动画结束时的状态
+            animation.removedOnCompletion = NO;
+            animation.fillMode = kCAFillModeForwards;
+            // 动画缓慢的进入，中间加速，然后减速的到达目的地。
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            [animLayer addAnimation:animation forKey:@""];
+            
+        }];
+        // 移除layer
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(animateDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.beginAnimate = NO;
+            [self setNeedsDisplay];
+            [animateLayers enumerateObjectsUsingBlock:^(CALayer * _Nonnull layer, NSUInteger idx, BOOL * _Nonnull stop) {
+                [layer removeFromSuperlayer];
+            }];
+        });
+        
+    }else {
+        [self setNeedsDisplay];
+    }
+    
 }
 
 - (void)removeChartLine:(LYChartLine *)line withAnimate:(BOOL)animate {
-    
+    [_chartLines removeObject:line];
+    if (self.isBeginAnimate) {
+        return;
+    }
+    [self setNeedsDisplay];
 }
 
 - (void)removeChartLines {
     _chartLines = nil;
+    if (self.isBeginAnimate) {
+        return;
+    }
     [self setNeedsDisplay];
 }
 

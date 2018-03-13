@@ -14,13 +14,13 @@
 		A7117C501E9CDBCE00F8FEEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */; };
 		A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */; };
 		A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */; };
-		A735A9061EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */; };
-		A7B9812A205666100007F315 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98123205666100007F315 /* LYTrendView.m */; };
-		A7B9812B205666100007F315 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98125205666100007F315 /* LYColumnView.m */; };
-		A7B9812C205666100007F315 /* LYTendMath.c in Sources */ = {isa = PBXBuildFile; fileRef = A7B98126205666100007F315 /* LYTendMath.c */; };
-		A7B9812D205666100007F315 /* LYTrendAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B98128205666100007F315 /* LYTrendAnimateView.m */; };
-		A7B98130205666FD0007F315 /* LYLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B9812F205666FD0007F315 /* LYLineChartView.m */; };
-		A7B9813620566E510007F315 /* NSString+LYSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B9813420566E500007F315 /* NSString+LYSize.m */; };
+		A742C485205784460056CE25 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47A205784460056CE25 /* LYTrendView.m */; };
+		A742C486205784460056CE25 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47B205784460056CE25 /* LYColumnView.m */; };
+		A742C487205784460056CE25 /* LYLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47E205784460056CE25 /* LYLineChartView.m */; };
+		A742C488205784460056CE25 /* LYTendMath.c in Sources */ = {isa = PBXBuildFile; fileRef = A742C47F205784460056CE25 /* LYTendMath.c */; };
+		A742C489205784460056CE25 /* LYTrendAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C482205784460056CE25 /* LYTrendAnimateView.m */; };
+		A742C48A205784460056CE25 /* UIBezierPath+SmoothLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C483205784460056CE25 /* UIBezierPath+SmoothLine.m */; };
+		A742C48B205784460056CE25 /* NSString+LYSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C484205784460056CE25 /* NSString+LYSize.m */; };
 		A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E14FF01E9F692B005467B5 /* LYPoint.m */; };
 /* End PBXBuildFile section */
 
@@ -37,21 +37,21 @@
 		A7117C541E9CDBCE00F8FEEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7355CFA1F6144A2000F5382 /* LYTestTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTestTrendView.h; sourceTree = "<group>"; };
 		A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTestTrendView.m; sourceTree = "<group>"; };
-		A735A9041EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+SmoothLine.h"; sourceTree = "<group>"; };
-		A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+SmoothLine.m"; sourceTree = "<group>"; };
+		A742C477205784450056CE25 /* UIBezierPath+SmoothLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+SmoothLine.h"; sourceTree = "<group>"; };
+		A742C478205784450056CE25 /* LYTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendView.h; sourceTree = "<group>"; };
+		A742C479205784460056CE25 /* LYColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYColumnView.h; sourceTree = "<group>"; };
+		A742C47A205784460056CE25 /* LYTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendView.m; sourceTree = "<group>"; };
+		A742C47B205784460056CE25 /* LYColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYColumnView.m; sourceTree = "<group>"; };
+		A742C47C205784460056CE25 /* LYTrendAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendAnimateView.h; sourceTree = "<group>"; };
+		A742C47D205784460056CE25 /* NSString+LYSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LYSize.h"; sourceTree = "<group>"; };
+		A742C47E205784460056CE25 /* LYLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLineChartView.m; sourceTree = "<group>"; };
+		A742C47F205784460056CE25 /* LYTendMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LYTendMath.c; sourceTree = "<group>"; };
+		A742C480205784460056CE25 /* LYLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLineChartView.h; sourceTree = "<group>"; };
+		A742C481205784460056CE25 /* LYTendMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTendMath.h; sourceTree = "<group>"; };
+		A742C482205784460056CE25 /* LYTrendAnimateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendAnimateView.m; sourceTree = "<group>"; };
+		A742C483205784460056CE25 /* UIBezierPath+SmoothLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+SmoothLine.m"; sourceTree = "<group>"; };
+		A742C484205784460056CE25 /* NSString+LYSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LYSize.m"; sourceTree = "<group>"; };
 		A78D59B71E9DCA8F006FCF80 /* LYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPoint.h; sourceTree = "<group>"; };
-		A7B98122205666100007F315 /* LYTendMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTendMath.h; sourceTree = "<group>"; };
-		A7B98123205666100007F315 /* LYTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendView.m; sourceTree = "<group>"; };
-		A7B98124205666100007F315 /* LYTrendAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendAnimateView.h; sourceTree = "<group>"; };
-		A7B98125205666100007F315 /* LYColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYColumnView.m; sourceTree = "<group>"; };
-		A7B98126205666100007F315 /* LYTendMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LYTendMath.c; sourceTree = "<group>"; };
-		A7B98127205666100007F315 /* LYTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendView.h; sourceTree = "<group>"; };
-		A7B98128205666100007F315 /* LYTrendAnimateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendAnimateView.m; sourceTree = "<group>"; };
-		A7B98129205666100007F315 /* LYColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYColumnView.h; sourceTree = "<group>"; };
-		A7B9812E205666FD0007F315 /* LYLineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYLineChartView.h; sourceTree = "<group>"; };
-		A7B9812F205666FD0007F315 /* LYLineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYLineChartView.m; sourceTree = "<group>"; };
-		A7B9813420566E500007F315 /* NSString+LYSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LYSize.m"; sourceTree = "<group>"; };
-		A7B9813520566E500007F315 /* NSString+LYSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LYSize.h"; sourceTree = "<group>"; };
 		A7E14FF01E9F692B005467B5 /* LYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 		A7117C421E9CDBCE00F8FEEB /* LYTrendView */ = {
 			isa = PBXGroup;
 			children = (
-				A7B98121205666100007F315 /* Classes */,
+				A742C4612057842C0056CE25 /* Classes */,
 				A7B981372056754C0007F315 /* ChartViewDemo */,
 				A7117C431E9CDBCE00F8FEEB /* Supporting Files */,
 			);
@@ -106,26 +106,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A7B98121205666100007F315 /* Classes */ = {
+		A742C4612057842C0056CE25 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A7B98122205666100007F315 /* LYTendMath.h */,
-				A7B98126205666100007F315 /* LYTendMath.c */,
-				A735A9041EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.h */,
-				A735A9051EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m */,
-				A7B9813520566E500007F315 /* NSString+LYSize.h */,
-				A7B9813420566E500007F315 /* NSString+LYSize.m */,
-				A7B98127205666100007F315 /* LYTrendView.h */,
-				A7B98123205666100007F315 /* LYTrendView.m */,
-				A7B98124205666100007F315 /* LYTrendAnimateView.h */,
-				A7B98128205666100007F315 /* LYTrendAnimateView.m */,
-				A7B98129205666100007F315 /* LYColumnView.h */,
-				A7B98125205666100007F315 /* LYColumnView.m */,
-				A7B9812E205666FD0007F315 /* LYLineChartView.h */,
-				A7B9812F205666FD0007F315 /* LYLineChartView.m */,
+				A742C479205784460056CE25 /* LYColumnView.h */,
+				A742C47B205784460056CE25 /* LYColumnView.m */,
+				A742C480205784460056CE25 /* LYLineChartView.h */,
+				A742C47E205784460056CE25 /* LYLineChartView.m */,
+				A742C47F205784460056CE25 /* LYTendMath.c */,
+				A742C481205784460056CE25 /* LYTendMath.h */,
+				A742C47C205784460056CE25 /* LYTrendAnimateView.h */,
+				A742C482205784460056CE25 /* LYTrendAnimateView.m */,
+				A742C478205784450056CE25 /* LYTrendView.h */,
+				A742C47A205784460056CE25 /* LYTrendView.m */,
+				A742C47D205784460056CE25 /* NSString+LYSize.h */,
+				A742C484205784460056CE25 /* NSString+LYSize.m */,
+				A742C477205784450056CE25 /* UIBezierPath+SmoothLine.h */,
+				A742C483205784460056CE25 /* UIBezierPath+SmoothLine.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		A7B981372056754C0007F315 /* ChartViewDemo */ = {
 			isa = PBXGroup;
@@ -214,16 +214,16 @@
 			files = (
 				A7117C4B1E9CDBCE00F8FEEB /* ViewController.m in Sources */,
 				A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */,
-				A7B9812A205666100007F315 /* LYTrendView.m in Sources */,
-				A7B9812D205666100007F315 /* LYTrendAnimateView.m in Sources */,
-				A735A9061EA5A1BE00E543F1 /* UIBezierPath+SmoothLine.m in Sources */,
-				A7B9813620566E510007F315 /* NSString+LYSize.m in Sources */,
-				A7B98130205666FD0007F315 /* LYLineChartView.m in Sources */,
+				A742C486205784460056CE25 /* LYColumnView.m in Sources */,
+				A742C48B205784460056CE25 /* NSString+LYSize.m in Sources */,
 				A7117C481E9CDBCE00F8FEEB /* AppDelegate.m in Sources */,
-				A7B9812B205666100007F315 /* LYColumnView.m in Sources */,
-				A7B9812C205666100007F315 /* LYTendMath.c in Sources */,
+				A742C488205784460056CE25 /* LYTendMath.c in Sources */,
+				A742C48A205784460056CE25 /* UIBezierPath+SmoothLine.m in Sources */,
+				A742C489205784460056CE25 /* LYTrendAnimateView.m in Sources */,
 				A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */,
 				A7117C451E9CDBCE00F8FEEB /* main.m in Sources */,
+				A742C487205784460056CE25 /* LYLineChartView.m in Sources */,
+				A742C485205784460056CE25 /* LYTrendView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

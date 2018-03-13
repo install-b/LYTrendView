@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Shangen Zhang. All rights reserved.
 //
 
-#import "LYTrendAnimateView.h"
+#import "LYTrendView.h"
 
 
 typedef NS_ENUM(NSUInteger,LYDotPosition) {
@@ -63,9 +63,7 @@ typedef NS_ENUM(NSUInteger,LYDotPosition) {
 
 
 
-
-
-@interface LYLineChartView : LYTrendAnimateView
+@interface LYLineChartView : LYTrendView
 /**
  add a trend line with point array
  
@@ -74,7 +72,18 @@ typedef NS_ENUM(NSUInteger,LYDotPosition) {
  */
 - (void)addChartLines:(NSArray <LYChartLine *> *)lines withAnimate:(BOOL)animate;
 
+
+/**
+ delete a trend line
+
+ @param line line data model
+ @param animate current havn't use
+ */
 - (void)removeChartLine:(LYChartLine *)line withAnimate:(BOOL)animate;
 
+
+/**
+ delete all trend lines
+ */
 - (void)removeChartLines;
 @end
