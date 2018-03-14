@@ -57,11 +57,11 @@ typedef double LYTrendValue;
 /** axesT color */
 @property (nonatomic,strong) UIColor * axesTColor;
 
-/** <#des#> */
+/** section segment style for X axes */
 @property(nonatomic,assign) LYSectionSegmentType sectionXSegmentType;
-/** <#des#> */
+/** section segment style for Y axes */
 @property(nonatomic,assign) LYSectionSegmentType sectionYSegmentType;
-/** des */
+/** section segment style for Z axes */
 @property(nonatomic,assign) LYSectionSegmentType sectionZSegmentType;
 
 /** axesX border  width */
@@ -97,9 +97,9 @@ typedef double LYTrendValue;
 /** draw section Z title attributesTextInfo */
 @property (nonatomic,strong) NSMutableDictionary * attributesSectionZDict;
 
-/** <#des#> */
+/** axesY originX */
 @property(nonatomic,assign,readonly) CGFloat sectionLeft ;
-/** <#des#> */
+/** axesY originX */
 @property(nonatomic,assign,readonly) CGFloat sectionBottom ;
 /** <#des#> */
 @property(nonatomic,assign,readonly) CGFloat sectionRight ;
@@ -112,15 +112,24 @@ typedef double LYTrendValue;
 /** <#des#> */
 @property(nonatomic,assign,readonly) CGFloat spaceZ ;
 
-/** <#des#> */
+/** sectionYLabelText */
 @property (nonatomic,copy)NSString * sectionYLabelText;
 /** sectionYLabelText */
 @property (nonatomic,copy)NSString * sectionZLabelText;
 @end
 
 @interface LYTrendView (TranferPoint)
+
+/**
+ valuePoint transfer to ScreenPoint(view position)
+
+ @param valuePoint valuePoint
+ @param valueType valueType
+ @return ScreenPoint
+ */
 - (CGPoint)tranferScreenPointWithValuePoint:(CGPoint)valuePoint
                                   valueType:(LYColumnValueType)valueType;
+
 
 - (CGFloat)lenthFromValue:(CGFloat)value
             withValueType:(LYColumnValueType)valueType;

@@ -23,10 +23,10 @@
  @return 刻度取整双精度值  （return == unit_times * pow(10,multiple)）
  */
 LYTendMath_EXTERN double ly_fixDoubleValueToInterValue(double max_value,
-                                     int s_count,
-                                     double mo_scale,
-                                     int *unit_times,
-                                     int *multiple);
+                                                       int s_count,
+                                                       double mo_scale,
+                                                       int *unit_times,
+                                                       int *multiple);
 
 
 #endif /* LYTendMath_h */
