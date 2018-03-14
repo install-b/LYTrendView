@@ -6,23 +6,23 @@
 //  Copyright © 2017年 Shangen Zhang. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "LYTestTrendView.h"
+#import "LYDemoLineChartViewController.h"
+#import "LYDemoLineChartView.h"
 #import "LYPoint.h"
 
 
-@interface ViewController ()<LYTrendViewDelegate>
+@interface LYDemoLineChartViewController ()<LYTrendViewDelegate>
 
 /** trendView */
-@property (nonatomic,weak) LYTestTrendView * trendView;
+@property (nonatomic,weak) LYDemoLineChartView * trendView;
 
 @end
 
-@implementation ViewController
+@implementation LYDemoLineChartViewController
 
-- (LYTestTrendView *)trendView {
+- (LYDemoLineChartView *)trendView {
     if (!_trendView) {
-        LYTestTrendView *trendView = [[LYTestTrendView alloc] initWithFrame:CGRectMake(20, 100, 320, 250)];
+        LYDemoLineChartView *trendView = [[LYDemoLineChartView alloc] initWithFrame:CGRectMake(20, 100, 320, 250)];
          trendView.delegate = self;
         [self.view addSubview:trendView];
         _trendView = trendView;

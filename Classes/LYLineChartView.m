@@ -49,7 +49,6 @@ typedef void(^LYDrawingTitleBlock)(void);
             // value point transform to view point
             CGPoint p = [self tranferScreenPointWithValuePoint:CGPointMake(obj.sectionValueX, obj.sectionValueY)valueType:LYColumnValueTypeY];
             
-            //idx ? [path addLineToPoint:p] :  [path moveToPoint:p];
             if (idx) {
                 line.smooth ? [path ly_addSmoothLineToPoint:p] : [path addLineToPoint:p];
             }else {
@@ -119,8 +118,7 @@ typedef void(^LYDrawingTitleBlock)(void);
         [line.pointArray enumerateObjectsUsingBlock:^(id<LYChartLinePointProtocol>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             // value point transform to view point
             CGPoint p = [self tranferScreenPointWithValuePoint:CGPointMake(obj.sectionValueX, obj.sectionValueY)valueType:LYColumnValueTypeY];
-            
-            //idx ? [path addLineToPoint:p] :  [path moveToPoint:p];
+        
             if (idx) {
                 line.smooth ? [path ly_addSmoothLineToPoint:p] : [path addLineToPoint:p];
             }else {

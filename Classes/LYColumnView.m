@@ -71,8 +71,6 @@
             columnHeight = [self lenthFromValue:tempValue >  column.columnValue ? column.columnValue : tempValue
                                   withValueType:column.valueType];
 
-            //columnHeight *= self.progress;
-            
             CGFloat bottom = self.sectionBottom;
             CGFloat top    = bottom - columnHeight;
             CGFloat left   = indexSpace * (index + 1) - 0.5 * column.columnWidth + self.spaceX * section + self.sectionLeft;
@@ -140,13 +138,17 @@
 - (void)sendTouchEventToDelegate:(BOOL)isSelect WithTouches:(NSSet<UITouch *> *)touches {
     
     CGPoint touchP = [touches.anyObject locationInView:self];
+    NSIndexPath *indexPath = [self indexPathWithPoint:touchP];
+    if (indexPath == nil) {
+        return;
+    }
     if (isSelect) {
         if ([self.delegate respondsToSelector:@selector(columnView:didselectIndexPath:atTouchPoint:)]) {
-            [(id<LYColumnViewDelegate>)self.delegate columnView:self didselectIndexPath:[self indexPathWithPoint:touchP] atTouchPoint:touchP];
+            [(id<LYColumnViewDelegate>)self.delegate columnView:self didselectIndexPath:indexPath atTouchPoint:touchP];
         }
     }else {
         if ([self.delegate respondsToSelector:@selector(columnView:deDidselectIndexPath:atTouchPoint:)]) {
-            [(id<LYColumnViewDelegate>)self.delegate columnView:self deDidselectIndexPath:[self indexPathWithPoint:touchP] atTouchPoint:touchP];
+            [(id<LYColumnViewDelegate>)self.delegate columnView:self deDidselectIndexPath:indexPath atTouchPoint:touchP];
         }
     }
 }
@@ -155,6 +157,9 @@
     
     double sectionXValue = [self sectionXValueFormPointX:point.x];
     int section = sectionXValue / self.sectionXValue;
+    if (section >= [self.delegate numberOfSectionXForTrendView:self]) {
+        return nil;
+    }
     
     NSInteger unberIndex = [(id<LYColumnViewDelegate>)self.delegate columnView:self numberOfColumnAtSetion:section];
     int index = (sectionXValue - section * self.sectionXValue) / (self.sectionXValue / unberIndex);

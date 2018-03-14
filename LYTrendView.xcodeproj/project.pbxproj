@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		A7117C451E9CDBCE00F8FEEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C441E9CDBCE00F8FEEB /* main.m */; };
 		A7117C481E9CDBCE00F8FEEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C471E9CDBCE00F8FEEB /* AppDelegate.m */; };
-		A7117C4B1E9CDBCE00F8FEEB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C4A1E9CDBCE00F8FEEB /* ViewController.m */; };
-		A7117C4E1E9CDBCE00F8FEEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7117C4C1E9CDBCE00F8FEEB /* Main.storyboard */; };
+		A7117C4B1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7117C4A1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m */; };
 		A7117C501E9CDBCE00F8FEEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */; };
 		A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */; };
-		A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */; };
+		A7355CFC1F6144A2000F5382 /* LYDemoLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYDemoLineChartView.m */; };
 		A742C485205784460056CE25 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47A205784460056CE25 /* LYTrendView.m */; };
 		A742C486205784460056CE25 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47B205784460056CE25 /* LYColumnView.m */; };
 		A742C487205784460056CE25 /* LYLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47E205784460056CE25 /* LYLineChartView.m */; };
@@ -21,6 +20,9 @@
 		A742C489205784460056CE25 /* LYTrendAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C482205784460056CE25 /* LYTrendAnimateView.m */; };
 		A742C48A205784460056CE25 /* UIBezierPath+SmoothLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C483205784460056CE25 /* UIBezierPath+SmoothLine.m */; };
 		A742C48B205784460056CE25 /* NSString+LYSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C484205784460056CE25 /* NSString+LYSize.m */; };
+		A75CC9332057D432007C386A /* LYDemoMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75CC9322057D432007C386A /* LYDemoMainTableViewController.m */; };
+		A75CC93A2057D97B007C386A /* LYDemoColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75CC9392057D97B007C386A /* LYDemoColumnViewController.m */; };
+		A75CC93D2057DC7D007C386A /* LYDemoColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A75CC93C2057DC7D007C386A /* LYDemoColumnView.m */; };
 		A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E14FF01E9F692B005467B5 /* LYPoint.m */; };
 /* End PBXBuildFile section */
 
@@ -29,14 +31,13 @@
 		A7117C441E9CDBCE00F8FEEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A7117C461E9CDBCE00F8FEEB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A7117C471E9CDBCE00F8FEEB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A7117C491E9CDBCE00F8FEEB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A7117C4A1E9CDBCE00F8FEEB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A7117C4D1E9CDBCE00F8FEEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A7117C491E9CDBCE00F8FEEB /* LYDemoLineChartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYDemoLineChartViewController.h; sourceTree = "<group>"; };
+		A7117C4A1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYDemoLineChartViewController.m; sourceTree = "<group>"; };
 		A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7117C521E9CDBCE00F8FEEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7117C541E9CDBCE00F8FEEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7355CFA1F6144A2000F5382 /* LYTestTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTestTrendView.h; sourceTree = "<group>"; };
-		A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTestTrendView.m; sourceTree = "<group>"; };
+		A7355CFA1F6144A2000F5382 /* LYDemoLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDemoLineChartView.h; sourceTree = "<group>"; };
+		A7355CFB1F6144A2000F5382 /* LYDemoLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDemoLineChartView.m; sourceTree = "<group>"; };
 		A742C477205784450056CE25 /* UIBezierPath+SmoothLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+SmoothLine.h"; sourceTree = "<group>"; };
 		A742C478205784450056CE25 /* LYTrendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTrendView.h; sourceTree = "<group>"; };
 		A742C479205784460056CE25 /* LYColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYColumnView.h; sourceTree = "<group>"; };
@@ -51,6 +52,12 @@
 		A742C482205784460056CE25 /* LYTrendAnimateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTrendAnimateView.m; sourceTree = "<group>"; };
 		A742C483205784460056CE25 /* UIBezierPath+SmoothLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+SmoothLine.m"; sourceTree = "<group>"; };
 		A742C484205784460056CE25 /* NSString+LYSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LYSize.m"; sourceTree = "<group>"; };
+		A75CC9312057D432007C386A /* LYDemoMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYDemoMainTableViewController.h; sourceTree = "<group>"; };
+		A75CC9322057D432007C386A /* LYDemoMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYDemoMainTableViewController.m; sourceTree = "<group>"; };
+		A75CC9382057D97B007C386A /* LYDemoColumnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYDemoColumnViewController.h; sourceTree = "<group>"; };
+		A75CC9392057D97B007C386A /* LYDemoColumnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYDemoColumnViewController.m; sourceTree = "<group>"; };
+		A75CC93B2057DC7D007C386A /* LYDemoColumnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYDemoColumnView.h; sourceTree = "<group>"; };
+		A75CC93C2057DC7D007C386A /* LYDemoColumnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYDemoColumnView.m; sourceTree = "<group>"; };
 		A78D59B71E9DCA8F006FCF80 /* LYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPoint.h; sourceTree = "<group>"; };
 		A7E14FF01E9F692B005467B5 /* LYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +104,8 @@
 			children = (
 				A7117C461E9CDBCE00F8FEEB /* AppDelegate.h */,
 				A7117C471E9CDBCE00F8FEEB /* AppDelegate.m */,
-				A7117C4C1E9CDBCE00F8FEEB /* Main.storyboard */,
+				A75CC9312057D432007C386A /* LYDemoMainTableViewController.h */,
+				A75CC9322057D432007C386A /* LYDemoMainTableViewController.m */,
 				A7117C4F1E9CDBCE00F8FEEB /* Assets.xcassets */,
 				A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */,
 				A7117C541E9CDBCE00F8FEEB /* Info.plist */,
@@ -127,15 +135,43 @@
 			path = Classes;
 			sourceTree = SOURCE_ROOT;
 		};
+		A75CC9342057D8DD007C386A /* Cotroller */ = {
+			isa = PBXGroup;
+			children = (
+				A7117C491E9CDBCE00F8FEEB /* LYDemoLineChartViewController.h */,
+				A7117C4A1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m */,
+				A75CC9382057D97B007C386A /* LYDemoColumnViewController.h */,
+				A75CC9392057D97B007C386A /* LYDemoColumnViewController.m */,
+			);
+			path = Cotroller;
+			sourceTree = "<group>";
+		};
+		A75CC9362057D8F1007C386A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7355CFA1F6144A2000F5382 /* LYDemoLineChartView.h */,
+				A7355CFB1F6144A2000F5382 /* LYDemoLineChartView.m */,
+				A75CC93B2057DC7D007C386A /* LYDemoColumnView.h */,
+				A75CC93C2057DC7D007C386A /* LYDemoColumnView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A75CC9372057D903007C386A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A78D59B71E9DCA8F006FCF80 /* LYPoint.h */,
+				A7E14FF01E9F692B005467B5 /* LYPoint.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A7B981372056754C0007F315 /* ChartViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				A7117C491E9CDBCE00F8FEEB /* ViewController.h */,
-				A7117C4A1E9CDBCE00F8FEEB /* ViewController.m */,
-				A78D59B71E9DCA8F006FCF80 /* LYPoint.h */,
-				A7E14FF01E9F692B005467B5 /* LYPoint.m */,
-				A7355CFA1F6144A2000F5382 /* LYTestTrendView.h */,
-				A7355CFB1F6144A2000F5382 /* LYTestTrendView.m */,
+				A75CC9342057D8DD007C386A /* Cotroller */,
+				A75CC9372057D903007C386A /* Model */,
+				A75CC9362057D8F1007C386A /* View */,
 			);
 			path = ChartViewDemo;
 			sourceTree = "<group>";
@@ -201,7 +237,6 @@
 			files = (
 				A7117C531E9CDBCE00F8FEEB /* LaunchScreen.storyboard in Resources */,
 				A7117C501E9CDBCE00F8FEEB /* Assets.xcassets in Resources */,
-				A7117C4E1E9CDBCE00F8FEEB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,16 +247,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7117C4B1E9CDBCE00F8FEEB /* ViewController.m in Sources */,
-				A7355CFC1F6144A2000F5382 /* LYTestTrendView.m in Sources */,
+				A7117C4B1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m in Sources */,
+				A7355CFC1F6144A2000F5382 /* LYDemoLineChartView.m in Sources */,
 				A742C486205784460056CE25 /* LYColumnView.m in Sources */,
+				A75CC93D2057DC7D007C386A /* LYDemoColumnView.m in Sources */,
 				A742C48B205784460056CE25 /* NSString+LYSize.m in Sources */,
 				A7117C481E9CDBCE00F8FEEB /* AppDelegate.m in Sources */,
 				A742C488205784460056CE25 /* LYTendMath.c in Sources */,
 				A742C48A205784460056CE25 /* UIBezierPath+SmoothLine.m in Sources */,
 				A742C489205784460056CE25 /* LYTrendAnimateView.m in Sources */,
 				A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */,
+				A75CC9332057D432007C386A /* LYDemoMainTableViewController.m in Sources */,
 				A7117C451E9CDBCE00F8FEEB /* main.m in Sources */,
+				A75CC93A2057D97B007C386A /* LYDemoColumnViewController.m in Sources */,
 				A742C487205784460056CE25 /* LYLineChartView.m in Sources */,
 				A742C485205784460056CE25 /* LYTrendView.m in Sources */,
 			);
@@ -230,14 +268,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A7117C4C1E9CDBCE00F8FEEB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7117C4D1E9CDBCE00F8FEEB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A7117C511E9CDBCE00F8FEEB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

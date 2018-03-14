@@ -6,9 +6,9 @@
 //  Copyright © 2017年 Shangen Zhang. All rights reserved.
 //
 
-#import "LYTestTrendView.h"
+#import "LYDemoLineChartView.h"
 
-@implementation LYTestTrendView
+@implementation LYDemoLineChartView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

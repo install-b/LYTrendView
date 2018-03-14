@@ -23,22 +23,22 @@
 
 @interface LYColumn : NSObject
 
-/** <#des#> */
+/** 属于哪个 坐标轴的 */
 @property(nonatomic,assign) LYColumnValueType valueType ;
 
-/** <#des#> */
+/** 柱状颜色 */
 @property (nonatomic,strong) UIColor * columnColor;
 
-/** <#des#> */
+/** 边框颜色 */
 @property (nonatomic,strong)UIColor * borderColor;
 
-/** <#des#> */
+/** 边框宽度 */
 @property(nonatomic,assign) CGFloat borderWidth;
 
-/** <#des#> */
+/** 柱状值 即 高度 */
 @property(nonatomic,assign) double columnValue ;
 
-/** <#des#> */
+/** 柱状宽度  */
 @property(nonatomic,assign) CGFloat columnWidth ;
 
 /** <#des#> */

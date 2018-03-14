@@ -8,6 +8,6 @@
 
 #import "LYLineChartView.h"
 
-@interface LYTestTrendView : LYLineChartView
+@interface LYDemoLineChartView : LYLineChartView
 
 @end

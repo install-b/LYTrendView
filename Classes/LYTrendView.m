@@ -40,7 +40,7 @@ typedef void(^DrawingTitleBlock)(void);
     [self setNeedsDisplay];
 }
 - (void)removeAllDrawRects {
-    
+    // SUB_LCASS implementation
 }
 #pragma mark - init
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -58,7 +58,7 @@ typedef void(^DrawingTitleBlock)(void);
     self.axesYBorderWidth = 1.0;
     self.axesXBorderWidth = 1.0;
     self.axesZBorderWidth = 1.0;
-    self.axesZBorderWidth = 1.0;
+    self.axesTBorderWidth = 1.0;
     
     self.sectionYBorderWidth = 1.0;
     self.sectionXBorderWidth = 1.0;
@@ -72,6 +72,7 @@ typedef void(^DrawingTitleBlock)(void);
 
 #pragma mark - redraw
 #define scaleLenth 5
+
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     // 0. location position
@@ -221,7 +222,7 @@ typedef void(^DrawingTitleBlock)(void);
     }
     
     
-    // 4. drawing sectionZ line
+    // 4. drawing sectionX line
     NSUInteger rowX = 0;
     if ([self.delegate respondsToSelector:@selector(numberOfSectionXForTrendView:)]) {
         rowX = [self.delegate numberOfSectionXForTrendView:self];
@@ -264,7 +265,7 @@ typedef void(^DrawingTitleBlock)(void);
     
     
     // 5. drawing axes
-    // 上
+    // top 上
     UIBezierPath * axesTPath = [UIBezierPath bezierPath];
     [axesTPath moveToPoint:CGPointMake(left, top)];
     [axesTPath addLineToPoint:CGPointMake(right,top)];
@@ -272,7 +273,7 @@ typedef void(^DrawingTitleBlock)(void);
     [self.axesXColor set];
     [axesTPath stroke];
     
-    // 左
+    // left 左
     UIBezierPath * axesYPath = [UIBezierPath bezierPath];
     [axesYPath moveToPoint:CGPointMake(left,top)];
     [axesYPath addLineToPoint:CGPointMake(left, bottom)];
@@ -280,7 +281,7 @@ typedef void(^DrawingTitleBlock)(void);
     [self.axesYColor set];
     [axesYPath stroke];
     
-    // 下
+    // bottom 下
     UIBezierPath * axesXPath = [UIBezierPath bezierPath];
     [axesXPath moveToPoint:CGPointMake(left, bottom)];
     [axesXPath addLineToPoint:CGPointMake(right,bottom)];
@@ -288,7 +289,7 @@ typedef void(^DrawingTitleBlock)(void);
     [self.axesXColor set];
     [axesXPath stroke];
     
-    // 右
+    // right 右
     UIBezierPath * axesZPath = [UIBezierPath bezierPath];
     [axesZPath moveToPoint:CGPointMake(right,top)];
     [axesZPath addLineToPoint:CGPointMake(right,bottom)];
