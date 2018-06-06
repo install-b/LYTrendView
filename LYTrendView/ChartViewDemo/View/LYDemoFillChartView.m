@@ -14,13 +14,13 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         self.contentInsets = UIEdgeInsetsMake(10, 5, 10, 5);
-        self.insetsBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-        self.axesXColor = [UIColor orangeColor];
-        self.axesYColor = [UIColor cyanColor];
+        //self.insetsBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+        self.axesXColor = [UIColor darkGrayColor];
+        self.axesYColor = [UIColor darkGrayColor];
+        self.axesZColor = [UIColor darkGrayColor];
         
-        
-        self.axesYBorderWidth = 2.0f;
-        self.axesXBorderWidth = 2.0f;
+        self.axesYBorderWidth = 1.0f;
+        self.axesXBorderWidth = 1.0f;
         self.axesZBorderWidth = 0.0f;
         self.axesTBorderWidth = 0.0f;
         

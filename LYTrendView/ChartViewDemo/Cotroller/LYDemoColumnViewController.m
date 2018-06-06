@@ -20,11 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    [self columnView];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     [self.columnView stratAnimate];
 }
 #pragma mark - LYTrendViewDelegate

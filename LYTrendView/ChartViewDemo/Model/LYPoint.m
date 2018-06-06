@@ -11,8 +11,7 @@
 @interface LYPoint ()
 /** 包装的点 */
 @property(nonatomic,assign) CGPoint point;
-/** <#des#> */
-@property (nonatomic,strong) NSDictionary * attributesDict;
+
 @end
 
 @implementation LYPoint
@@ -34,25 +33,14 @@
 }
 
 - (LYDotPosition)pointPosition {
-    return LYDotPositionTop;
+    return LYDotPositionCenter;
 }
 
 - (NSString *)pointLableFormate {
-    return @"(yy)";
+    return nil;
 }
 - (NSDictionary<NSString *,id> *)pointAttributs {
-    return self.attributesDict;
-}
-
-- (NSDictionary *)attributesDict {
-    if (!_attributesDict) {
-        NSMutableDictionary*attributesDict = [NSMutableDictionary dictionary];
-        attributesDict[NSFontAttributeName] = [UIFont systemFontOfSize:8];
-        attributesDict[NSForegroundColorAttributeName] = [UIColor redColor];
-        attributesDict[NSStrokeWidthAttributeName] = @"0";
-        _attributesDict = attributesDict;
-    }
-    return _attributesDict;
+    return nil;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "LYDemoLineChartViewController.h"
 #import "LYDemoLineChartView.h"
-#import "LYPoint.h"
+#import "LYTitlePoint.h"
 
 
 @interface LYDemoLineChartViewController ()<LYTrendViewDelegate>
@@ -39,6 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     // add trend view
     [self trendView];
 }
@@ -118,8 +119,6 @@
 }
 
 
-
-
 - (id)dataSource {
     
     return @[
@@ -127,12 +126,12 @@
                  @"borderWidth" : @"2.0",
                  @"borderColor" : [UIColor redColor],
                  @"pointArray" : @[
-                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 0)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(40, 25)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(100, 15)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(140, 25)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(180, 32)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(260, 27)],
+                         [[LYTitlePoint alloc] initWithPoint:CGPointMake(0, 0)],
+                         [[LYTitlePoint alloc] initWithPoint:CGPointMake(40, 25)],
+                         [[LYTitlePoint alloc] initWithPoint:CGPointMake(100, 15)],
+                         [[LYTitlePoint alloc] initWithPoint:CGPointMake(140, 25)],
+                         [[LYTitlePoint alloc] initWithPoint:CGPointMake(180, 32)],
+                         [[LYTitlePoint alloc] initWithPoint:CGPointMake(260, 27)],
                          ]
                  },
              
