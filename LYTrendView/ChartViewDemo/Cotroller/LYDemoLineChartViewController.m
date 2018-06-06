@@ -16,13 +16,20 @@
 /** trendView */
 @property (nonatomic,weak) LYDemoLineChartView * trendView;
 
+
+/* BOO */
+@property (nonatomic,assign) BOOL didAddLines;
 @end
 
 @implementation LYDemoLineChartViewController
 
+- (Class)trendViewClass {
+    return LYDemoLineChartView.class;
+}
+
 - (LYDemoLineChartView *)trendView {
     if (!_trendView) {
-        LYDemoLineChartView *trendView = [[LYDemoLineChartView alloc] initWithFrame:CGRectMake(20, 100, 320, 250)];
+        LYDemoLineChartView *trendView = [[[self trendViewClass] alloc] initWithFrame:CGRectMake(20, 100, 320, 250)];
          trendView.delegate = self;
         [self.view addSubview:trendView];
         _trendView = trendView;
@@ -44,13 +51,12 @@
 
 
 - (void)trendLineClick {
-    static BOOL didAddLines = NO;
-    if (didAddLines) {
-        self.trendView.trendBackGroundColor = [UIColor greenColor];
+
+    if (self.didAddLines) {
         return;
     }
     [self.trendView addChartLines:[self lines] withAnimate:YES];
-    didAddLines = YES;
+    self.didAddLines = YES;
 }
 
 #pragma mark -  LYTrendViewDelegate
@@ -119,14 +125,14 @@
     return @[
              @{
                  @"borderWidth" : @"2.0",
-                 @"borderColor" : [UIColor purpleColor],
+                 @"borderColor" : [UIColor redColor],
                  @"pointArray" : @[
                          [[LYPoint alloc] initWithPoint:CGPointMake(0, 0)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(40, 25)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(100, 15)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(140, 25)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(180, 32)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(250, 27)],
+                         [[LYPoint alloc] initWithPoint:CGPointMake(260, 27)],
                          ]
                  },
              
@@ -139,15 +145,15 @@
                          [[LYPoint alloc] initWithPoint:CGPointMake(45, 10)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(80, 32)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(200, 20)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(240, 30)],
+                         [[LYPoint alloc] initWithPoint:CGPointMake(260, 30)],
                          ]
                  },
              
              @{
                  @"borderWidth" : @"3.0",
-                 @"borderColor" : [UIColor whiteColor],
+                 @"borderColor" : [UIColor greenColor],
                  @"pointArray" : @[
-                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 0)],
+                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 20)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(30, 10)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(130, 3)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(200, 20)],

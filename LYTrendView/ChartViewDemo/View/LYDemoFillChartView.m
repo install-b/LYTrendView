@@ -1,18 +1,18 @@
 //
-//  LYTestTrendView.m
+//  LYDemoFillChartView.m
 //  LYTrendView
 //
-//  Created by Shangen Zhang on 2017/9/7.
-//  Copyright © 2017年 Shangen Zhang. All rights reserved.
+//  Created by Shangen Zhang on 2018/6/6.
+//  Copyright © 2018年 Shangen Zhang. All rights reserved.
 //
 
-#import "LYDemoLineChartView.h"
+#import "LYDemoFillChartView.h"
 
-@implementation LYDemoLineChartView
+@implementation LYDemoFillChartView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.contentInsets = UIEdgeInsetsMake(10, 5, 10, 5);
         self.insetsBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
         self.axesXColor = [UIColor orangeColor];
@@ -27,7 +27,7 @@
         self.sectionXValue = 25.0f;
         self.sectionYValue = 10.0f;
         self.attributesSectionXDict[NSForegroundColorAttributeName] = [UIColor redColor];
-       
+        
         
         self.sectionYSegmentType = LYSectionSegmentTypeFullLine;
         self.sectionYColor = [UIColor lightGrayColor];
@@ -35,7 +35,5 @@
     }
     return self;
 }
-
-
 
 @end

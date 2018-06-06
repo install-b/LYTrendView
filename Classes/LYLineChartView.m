@@ -93,6 +93,10 @@ typedef void(^LYDrawingTitleBlock)(void);
         [line.borderColor set];
         [path stroke];
         
+        
+        // draw path other (eg. bg color)
+        [self didAddLinePath:path color:line.borderColor inrect:rect];
+        
         // drawing dot
         [dotPaths enumerateObjectsUsingBlock:^(UIBezierPath * _Nonnull dotPath, NSUInteger idx, BOOL * _Nonnull stop) {
             [line.dotColor set];
@@ -106,6 +110,11 @@ typedef void(^LYDrawingTitleBlock)(void);
     }];
     
 }
+
+- (void)didAddLinePath:(UIBezierPath *)path color:(UIColor *)bgColor inrect:(CGRect)rect {
+    // code here when add line path.  it may implement at sub class
+}
+
 
 #define animateDuration 2.5f
 

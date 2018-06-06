@@ -55,6 +55,10 @@
                  @"pushVc" : @"LYDemoLineChartViewController"
                  },
              @{
+                 @"title" : @"填充曲线图DEMO",
+                 @"pushVc" : @"LYDemoFillChartViewViewController"
+                 },
+             @{
                  @"title" : @"柱状图DEMO",
                  @"pushVc" : @"LYDemoColumnViewController"
                  },
