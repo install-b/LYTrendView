@@ -17,6 +17,7 @@
 		A715E0F220C80C57000BCC58 /* LYDemoFillChartViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A715E0F120C80C57000BCC58 /* LYDemoFillChartViewViewController.m */; };
 		A715E0F520C81198000BCC58 /* LYTitlePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A715E0F420C81198000BCC58 /* LYTitlePoint.m */; };
 		A715E0FE20C81A11000BCC58 /* LYPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A715E0FD20C81A11000BCC58 /* LYPieChartView.m */; };
+		A715E10120C82111000BCC58 /* LYPieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A715E10020C82111000BCC58 /* LYPieModel.m */; };
 		A7355CFC1F6144A2000F5382 /* LYDemoLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYDemoLineChartView.m */; };
 		A742C485205784460056CE25 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47A205784460056CE25 /* LYTrendView.m */; };
 		A742C486205784460056CE25 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47B205784460056CE25 /* LYColumnView.m */; };
@@ -51,6 +52,8 @@
 		A715E0F420C81198000BCC58 /* LYTitlePoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYTitlePoint.m; sourceTree = "<group>"; };
 		A715E0FC20C81A11000BCC58 /* LYPieChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYPieChartView.h; sourceTree = "<group>"; };
 		A715E0FD20C81A11000BCC58 /* LYPieChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYPieChartView.m; sourceTree = "<group>"; };
+		A715E0FF20C82111000BCC58 /* LYPieModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYPieModel.h; sourceTree = "<group>"; };
+		A715E10020C82111000BCC58 /* LYPieModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYPieModel.m; sourceTree = "<group>"; };
 		A7355CFA1F6144A2000F5382 /* LYDemoLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDemoLineChartView.h; sourceTree = "<group>"; };
 		A7355CFB1F6144A2000F5382 /* LYDemoLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDemoLineChartView.m; sourceTree = "<group>"; };
 		A742C477205784450056CE25 /* UIBezierPath+SmoothLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+SmoothLine.h"; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 			children = (
 				A715E0FC20C81A11000BCC58 /* LYPieChartView.h */,
 				A715E0FD20C81A11000BCC58 /* LYPieChartView.m */,
+				A715E0FF20C82111000BCC58 /* LYPieModel.h */,
+				A715E10020C82111000BCC58 /* LYPieModel.m */,
 			);
 			path = PieChart;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				A7117C4B1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m in Sources */,
 				A7355CFC1F6144A2000F5382 /* LYDemoLineChartView.m in Sources */,
 				A715E0EF20C80BF2000BCC58 /* LYDemoFillChartView.m in Sources */,
+				A715E10120C82111000BCC58 /* LYPieModel.m in Sources */,
 				A715E0FE20C81A11000BCC58 /* LYPieChartView.m in Sources */,
 				A742C486205784460056CE25 /* LYColumnView.m in Sources */,
 				A75CC93D2057DC7D007C386A /* LYDemoColumnView.m in Sources */,

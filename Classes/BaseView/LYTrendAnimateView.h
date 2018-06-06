@@ -9,9 +9,9 @@
 
 @interface LYTrendAnimateView : LYTrendView
 
-/** <#des#> */
+/** 进度 */
 @property(nonatomic,assign,readonly) double progress;
-/** <#des#> */
+/** 动画过程是否隐藏需要 */
 @property(nonatomic,assign) BOOL shouldHiddenDrawRect;
 
 - (void)reloadDataWithAnimate:(BOOL)animate NS_REQUIRES_SUPER;

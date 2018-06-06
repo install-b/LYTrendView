@@ -12,13 +12,13 @@
 
 
 @interface LYTrendAnimateView ()
-/** <#des#> */
+/** 开始动画 */
 @property(nonatomic,assign) BOOL beginAnima;
 
-/** <#des#> */
+/** 动画定时器 */
 @property (nonatomic,strong)CADisplayLink * displayLink;
 
-/** NST */
+/** 动画开始的时间 */
 @property(nonatomic,assign) NSTimeInterval startTime ;
 
 @end
