@@ -31,16 +31,4 @@
 - (CGFloat)sectionValueZ {
     return 0;
 }
-
-- (LYDotPosition)pointPosition {
-    return LYDotPositionCenter;
-}
-
-- (NSString *)pointLableFormate {
-    return nil;
-}
-- (NSDictionary<NSString *,id> *)pointAttributs {
-    return nil;
-}
-
 @end

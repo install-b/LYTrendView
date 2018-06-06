@@ -63,7 +63,10 @@ typedef void(^LYDrawingTitleBlock)(void);
             }
             
             // collect dotTitle drawing code
-            if (obj.pointLableFormate.length) {
+            if ([obj respondsToSelector:@selector(pointLableFormate)] &&
+                [obj respondsToSelector:@selector(pointAttributs)] &&
+                [obj respondsToSelector:@selector(pointPosition)] &&
+                obj.pointLableFormate.length) {
                 // alloc dotTitleBlockArray
                 dotTitleBlockArray = dotTitleBlockArray ? : [NSMutableArray array];
                 
