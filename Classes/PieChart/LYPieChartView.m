@@ -25,22 +25,15 @@ static CGFloat fullCricleAngle = M_PI * 2;
 
 @implementation LYPieChartView
 
-//- (instancetype)initWithFrame:(CGRect)frame
-//{
-//    self = [super initWithFrame:frame];
-//    if (self) {
-//        _
-//    }
-//    return self;
-//}
-
 - (void)setPieModels:(NSArray<LYPieModel *> *)pieModels {
     _pieModels = pieModels;
     [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)bounds {
-    [super drawRect:bounds];
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    CGRect bounds = self.insetRect;
     
     NSArray<LYPieModel *> *pieModels = self.pieModels;
     NSInteger pieCount = pieModels.count;
@@ -122,13 +115,8 @@ static CGFloat fullCricleAngle = M_PI * 2;
             return;
         }
         
-//        UIBezierPath *test = [UIBezierPath bezierPathWithRect:annotationRect];
-//        [[UIColor yellowColor] set];
-//        [test fill];
-//
         NSDictionary *antationAttribute = self.annotationAttribute;
         
-    
         CGFloat poinSize = [@"1" sizeWithAttributes:antationAttribute].height;
         CGFloat margin = 10;
         
@@ -197,7 +185,8 @@ static CGFloat fullCricleAngle = M_PI * 2;
 - (void)didDrawInCricleWithPath:(UIBezierPath *)path inRect:(CGRect)rect {
     
 }
-#pragma mark -
+
+#pragma mark - caculates
 - (CGPoint)circleCenterInRect:(CGRect)rect {
     return CGPointMake(rect.origin.x + (rect.size.width * 0.5), rect.origin.y + (rect.size.height * 0.5));
 }

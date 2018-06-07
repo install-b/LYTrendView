@@ -12,6 +12,8 @@
 @interface LYDemoPieViewController ()
 /* <#des#> */
 @property (nonatomic,weak) LYDemoPieChartView * pieChartView;
+/* <#des#> */
+@property (nonatomic,assign) NSInteger touchCount;
 @end
 
 @implementation LYDemoPieViewController
@@ -22,7 +24,49 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.pieChartView.pieModels = [self pieModels];
+    
+    
+    switch (self.touchCount) {
+        case 0:
+            self.pieChartView.pieModels = [self pieModels];
+            break;
+        case 1:{
+             self.pieChartView.annotationPosition = LYPieChartAnnotationPositionRight;
+            [self.pieChartView setNeedsDisplay];
+        }
+           
+            break;
+        case 2:{
+            self.pieChartView.annotationPosition = LYPieChartAnnotationPositionBotton;
+            [self.pieChartView setNeedsDisplay];
+        }
+            
+            break;
+        case 3:{
+            self.pieChartView.annotationPosition = LYPieChartAnnotationPositionTop;
+            [self.pieChartView setNeedsDisplay];
+        }
+            
+            break;
+        case 4:
+        {
+            self.pieChartView.annotationType = LYPieChartAnnotationTypeDot;
+            self.pieChartView.annotationPosition = LYPieChartAnnotationPositionRight;
+            self.pieChartView.inCircleRadii = 10;
+            [self.pieChartView setNeedsDisplay];
+        }
+    
+            break;
+        case 5:{
+            self.pieChartView.contentInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+            [self.pieChartView setNeedsDisplay];
+        }
+            
+            break;
+        default:
+            break;
+    }
+    self.touchCount += 1;
 }
 
 

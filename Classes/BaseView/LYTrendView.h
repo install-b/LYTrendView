@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #include "LYTendMath.h"
+#import "LYChartBaseView.h"
 
 typedef NS_ENUM(NSInteger,LYSectionSegmentType) {
     LYSectionSegmentTypeScale,
@@ -25,21 +26,13 @@ typedef double LYTrendValue;
 
 @protocol LYTrendViewDelegate;
 
-@interface LYTrendView : UIView
+@interface LYTrendView : LYChartBaseView
 
 /** delegate */
 @property (nonatomic,weak) id<LYTrendViewDelegate> delegate;
 
-/* reloadData */
-- (void)reloadData;
-
-/** contentInsets  */
-@property(nonatomic,assign) UIEdgeInsets contentInsets;
-/** content insets background color */
-@property (nonatomic,strong) UIColor * insetsBackgroundColor;
 /** trend view background color */
 @property (nonatomic,strong) UIColor * trendBackGroundColor;
-
 
 /** section X value size default is 1.0 */
 @property(nonatomic,assign) CGFloat sectionXValue;

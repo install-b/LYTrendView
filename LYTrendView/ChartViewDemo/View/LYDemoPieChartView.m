@@ -16,6 +16,7 @@
         self.inCircleColor = [UIColor whiteColor];
         self.inCircleRadii = 20.0f;
         self.annotationPosition = LYPieChartAnnotationPositionLeft;
+        self.backgroundColor = [UIColor yellowColor];
     }
     return self;
 }

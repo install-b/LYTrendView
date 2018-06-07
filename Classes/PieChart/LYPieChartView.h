@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Shangen Zhang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LYChartBaseView.h"
 #import "LYPieModel.h"
 
 // 描述信息位置
@@ -27,7 +27,7 @@ typedef enum : NSUInteger {
 } LYPieChartAnnotationType;
 
 
-@interface LYPieChartView : UIView
+@interface LYPieChartView : LYChartBaseView
 
 /* 饼图模型 */
 @property (nonatomic,strong) NSArray <LYPieModel *> * pieModels;

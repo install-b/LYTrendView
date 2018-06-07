@@ -36,25 +36,14 @@ typedef void(^DrawingTitleBlock)(void);
 @end
 
 @implementation LYTrendView
-- (void)reloadData {
-    [self setNeedsDisplay];
-}
+
 - (void)removeAllDrawRects {
     // SUB_LCASS implementation
 }
-#pragma mark - init
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self initSetUps];
-    }
-    return self;
-}
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    [self initSetUps];
-}
+#pragma mark - init setup
 - (void)initSetUps {
+    [super initSetUps];
     self.axesYBorderWidth = 1.0;
     self.axesXBorderWidth = 1.0;
     self.axesZBorderWidth = 1.0;
@@ -67,7 +56,7 @@ typedef void(^DrawingTitleBlock)(void);
     self.sectionXValue = 1.0;
     self.sectionYValue = 1.0;
     self.sectionZValue = 1.0;
-    self.backgroundColor = [UIColor clearColor];
+    
 }
 
 #pragma mark - redraw
@@ -75,24 +64,19 @@ typedef void(^DrawingTitleBlock)(void);
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    // 0. location position
+    [super drawRect:rect];
+    
+    // 1. location position
     CGFloat top = self.contentInsets.top;
     CGFloat left = self.sectionYSpace + self.contentInsets.left;
     CGFloat bottom = rect.size.height - self.contentInsets.bottom - self.sectionXSpace;
     CGFloat right = rect.size.width - (self.contentInsets.right + self.sectionZSpace);
-    self.originalPoint = CGPointMake(left, bottom);
     
+    
+    self.originalPoint = CGPointMake(left, bottom);
     _sectionLeft = left;
     _sectionBottom = bottom;
     _sectionRight = right;
-    
-    // 1.  Drawing insets background color
-    if (_insetsBackgroundColor) {
-        UIBezierPath *backGroundPath = [UIBezierPath bezierPathWithRect:CGRectMake(_contentInsets.left, _contentInsets.top, rect.size.width - _contentInsets.left - _contentInsets.right, rect.size.height - _contentInsets.top - _contentInsets.bottom)];
-        [_insetsBackgroundColor set];
-        [backGroundPath fill];
-    }
-    
     
     // 2. drawing trend background color
     if (_trendBackGroundColor) {
@@ -332,10 +316,7 @@ typedef void(^DrawingTitleBlock)(void);
     _trendBackGroundColor = trendBackGroundColor;
     [self setNeedsDisplay];
 }
-- (void)setInsetsBackgroundColor:(UIColor *)insetsBackgroundColor {
-    _insetsBackgroundColor = insetsBackgroundColor;
-    [self setNeedsDisplay];
-}
+
 
 #pragma mark - lazy load
 - (UIColor *)axesYColor {
