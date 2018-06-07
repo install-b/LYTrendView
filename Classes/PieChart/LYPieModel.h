@@ -15,4 +15,13 @@
 /* 名称 */
 @property (nonatomic,strong) NSString * itemName;
 
+/* 简介 */
+@property (nonatomic,strong) NSString * summary;
+
+/* 百分比 0 ~ 1 */
+@property (nonatomic,assign) CGFloat progress;
+
+/* <#des#> */
+@property (nonatomic,assign) CGFloat rdiiOffset;
+
 @end

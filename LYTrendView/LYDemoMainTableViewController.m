@@ -62,6 +62,11 @@
                  @"title" : @"柱状图DEMO",
                  @"pushVc" : @"LYDemoColumnViewController"
                  },
+             @{
+                 @"title" : @"饼图DEMO",
+                 @"pushVc" : @"LYDemoPieViewController"
+                 },
+             
              ];
 }
 
