@@ -19,18 +19,30 @@ typedef enum : NSInteger {
     LYPieChartAnnotationPositionSurround    // 环绕
 } LYPieChartAnnotationPosition;
 
-@interface LYPieChartView : UIView
+// 图例类型
+typedef enum : NSUInteger {
+    LYPieChartAnnotationTypeRect,  // 矩形框
+    LYPieChartAnnotationTypeDot,   // 圆点
+    LYPieChartAnnotationTypeHollow // 空心圆
+} LYPieChartAnnotationType;
 
-/* 图例说明的位置 */
-@property (nonatomic,assign) LYPieChartAnnotationPosition annotationPosition;
+
+@interface LYPieChartView : UIView
 
 /* 饼图模型 */
 @property (nonatomic,strong) NSArray <LYPieModel *> * pieModels;
 
-/* 开始的角度 */
+/* 开始绘制的角度 默认三点中方向顺时针 */
 @property (nonatomic,assign) CGFloat startAngle;
-/* 绘制的方向 */
-@property (nonatomic,assign,getter=isClockwise) BOOL clockwise;
+
+
+
+/* 图例说明的位置 */
+@property (nonatomic,assign) LYPieChartAnnotationPosition annotationPosition;
+/* 图例的样式 */
+@property (nonatomic,assign) LYPieChartAnnotationType annotationType;
+/* 图例说明的字体风格 默认13 */
+@property (nonatomic,strong) NSDictionary <NSAttributedStringKey,id> *annotationAttribute;
 
 
 /* 外圈半径 default is min of half——width or half——height  */
@@ -64,5 +76,24 @@ typedef enum : NSInteger {
 - (CGPoint)circleCenterInRect:(CGRect)rect;
 
 
+/**
+ where rect should Cricle pie draw
+ -- it can implement at your sub class
 
+ @param rect may be self bounds
+ @param annotationPosition annotation position
+ @return annotation rect
+ */
+- (CGRect)circleRectForBounds:(CGRect)rect withAnnotationPosition:(LYPieChartAnnotationPosition)annotationPosition;
+
+
+/**
+ where rect should pie annotation  draw
+ -- it can implement at your sub class
+
+ @param rect may be self bounds
+ @param annotationPosition annotation position
+ @return annotation rect
+ */
+- (CGRect)annotationRectForBounds:(CGRect)rect withAnnotationPosition:(LYPieChartAnnotationPosition)annotationPosition;
 @end

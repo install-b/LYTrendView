@@ -25,22 +25,34 @@ static CGFloat fullCricleAngle = M_PI * 2;
 
 @implementation LYPieChartView
 
+//- (instancetype)initWithFrame:(CGRect)frame
+//{
+//    self = [super initWithFrame:frame];
+//    if (self) {
+//        _
+//    }
+//    return self;
+//}
+
 - (void)setPieModels:(NSArray<LYPieModel *> *)pieModels {
     _pieModels = pieModels;
     [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
+- (void)drawRect:(CGRect)bounds {
+    [super drawRect:bounds];
     
-    if (self.pieModels.count < 1 ) {
-        
-        return;
-    }
+    NSArray<LYPieModel *> *pieModels = self.pieModels;
+    NSInteger pieCount = pieModels.count;
     
-    CGPoint circleCenter = [self circleCenterInRect:rect];
+    if ( pieCount < 1 ) return;
     
+    LYPieChartAnnotationPosition annotationPosition = self.annotationPosition;
+    CGRect circleRect = [self circleRectForBounds:bounds withAnnotationPosition:annotationPosition];
     //
+    CGPoint circleCenter = [self circleCenterInRect:circleRect];
+    
+    // 绘制外圆
     if (self.outCircleRadii > 0) {
         // 获取外圆的路径
          UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:circleCenter radius:self.outCircleRadii startAngle:0 endAngle:fullCricleAngle clockwise:YES];
@@ -58,26 +70,28 @@ static CGFloat fullCricleAngle = M_PI * 2;
             [path stroke];
         }
         // 完成外圆绘制的事件
-        [self didDrawOutCricleWithPath:path inRect:rect];
+        [self didDrawOutCricleWithPath:path inRect:circleRect];
     }
     
     
     // 绘制区块
     {
-        CGFloat radii = (self.outCircleRadii > 0) ? self.outCircleRadii : (MIN(rect.size.width, rect.size.height)) * 0.5;
+        CGFloat radii = (self.outCircleRadii > 0) ? self.outCircleRadii : (MIN(circleRect.size.width, circleRect.size.height)) * 0.5;
         __block CGFloat startAngle = self.startAngle;
         
-        [self.pieModels enumerateObjectsUsingBlock:^(LYPieModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [pieModels enumerateObjectsUsingBlock:^(LYPieModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             CGFloat endAngle = fullCricleAngle * obj.progress + startAngle;
-            UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:circleCenter radius:radii+obj.rdiiOffset startAngle:startAngle endAngle:endAngle clockwise:self.isClockwise];
+            UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:circleCenter radius:radii+obj.radiiOffset startAngle:startAngle endAngle:endAngle clockwise:self.isClockwise];
             [path addLineToPoint:circleCenter];
-            [obj.pieColor ? : [UIColor ly_randomColor] set];
+            obj.pieColor = obj.pieColor ?: [UIColor ly_randomColor];
+            [obj.pieColor set];
+            
             [path fill];
             startAngle = endAngle;
             
             // 绘制完一个饼图的事件
-            [self didDrawPieWithModel:obj atPath:path inRect:rect];
+            [self didDrawPieWithModel:obj atPath:path inRect:circleRect];
         }];
     }
     
@@ -98,9 +112,79 @@ static CGFloat fullCricleAngle = M_PI * 2;
             [path stroke];
         }
         // 完成内圆绘制的事件
-        [self didDrawInCricleWithPath:path inRect:rect];
+        [self didDrawInCricleWithPath:path inRect:circleRect];
     }
     
+    // 绘制图例
+    if (annotationPosition) {
+        CGRect annotationRect = [self annotationRectForBounds:bounds withAnnotationPosition:annotationPosition];
+        if (CGRectEqualToRect(CGRectZero, annotationRect)) {
+            return;
+        }
+        
+//        UIBezierPath *test = [UIBezierPath bezierPathWithRect:annotationRect];
+//        [[UIColor yellowColor] set];
+//        [test fill];
+//
+        NSDictionary *antationAttribute = self.annotationAttribute;
+        
+    
+        CGFloat poinSize = [@"1" sizeWithAttributes:antationAttribute].height;
+        CGFloat margin = 10;
+        
+        CGFloat topOffset = [self p_addjustTopOffsetWithPointSize:poinSize  maxHeight:annotationRect.size.height itemNumber:(int)pieCount preMargin:&margin];
+        if (topOffset < 0) {
+            return;
+        }
+        topOffset += annotationRect.origin.y;
+        
+        CGFloat dotWH = poinSize - 6;
+        if (dotWH < 0) {
+            dotWH = poinSize;
+        }else if (dotWH < 5) {
+            dotWH = 5;
+        }
+        CGFloat dotX = annotationRect.origin.x + margin;
+        CGFloat dotRadius = self.annotationType ? (dotWH * 0.5) : 0;
+        CGFloat textX = dotX + dotWH * 1.5;
+        CGFloat dotFix = (poinSize - dotWH) * 0.5;
+        
+        [pieModels enumerateObjectsUsingBlock:^(LYPieModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CGFloat textY = (poinSize + margin) * idx + topOffset;
+            UIBezierPath *dotPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(dotX, textY + dotFix, dotWH, dotWH) cornerRadius:dotRadius];
+            [obj.pieColor set];
+            [dotPath fill];
+            if (obj.itemNameAttr) {
+                [obj.itemNameAttr drawAtPoint:CGPointMake(textX, textY)];
+            }else {
+                [obj.itemName drawAtPoint:CGPointMake(textX, textY) withAttributes:self.annotationAttribute];
+            }
+            
+        }];
+       
+    }
+}
+- (CGFloat)p_addjustTopOffsetWithPointSize:(CGFloat)poinSize
+                                 maxHeight:(CGFloat)maxH
+                                itemNumber:(int)pieCount
+                                 preMargin:(CGFloat *)margin {
+    CGFloat topOffset = (maxH - ( poinSize * pieCount + (pieCount - 1)* (*margin)) ) * 0.5;
+    if (topOffset < 0) {
+        CGFloat marginTemp = (*margin) * 0.5;
+        if (marginTemp > 1) {
+            *margin = marginTemp;
+            return [self p_addjustTopOffsetWithPointSize:poinSize maxHeight:maxH itemNumber:pieCount preMargin:margin];
+        }else {
+            return -1;
+        }
+        
+    }
+    return topOffset;
+}
+/* 绘制的方向 是否为shu时针反向 */
+//@property (nonatomic,assign,getter=isClockwise) BOOL clockwise;
+- (BOOL)isClockwise {
+    return YES;
 }
 #pragma mark - 子类拓展的方法
 - (void)didDrawOutCricleWithPath:(UIBezierPath *)path inRect:(CGRect)rect {
@@ -116,6 +200,96 @@ static CGFloat fullCricleAngle = M_PI * 2;
 #pragma mark -
 - (CGPoint)circleCenterInRect:(CGRect)rect {
     return CGPointMake(rect.origin.x + (rect.size.width * 0.5), rect.origin.y + (rect.size.height * 0.5));
+}
+
+- (CGRect)circleRectForBounds:(CGRect)rect withAnnotationPosition:(LYPieChartAnnotationPosition)annotationPosition {
+    switch (annotationPosition) {
+        case LYPieChartAnnotationPositionTop:
+            // 计算高度
+        {
+            CGFloat h = rect.size.height * 0.5;
+            rect.size.height = h;
+            rect.origin.y += h;
+            return rect;
+        }
+            break;
+        case LYPieChartAnnotationPositionLeft:
+        {
+            CGFloat w = rect.size.width * 0.5;
+            rect.size.width = w;
+            rect.origin.x += w;
+            return rect;
+        }
+            break;
+        case LYPieChartAnnotationPositionBotton:
+        {
+            CGFloat h = rect.size.height * 0.5;
+            rect.size.height = h;
+            return rect;
+        }
+            break;
+        case LYPieChartAnnotationPositionRight:
+        {
+            CGFloat w = rect.size.width * 0.5;
+            rect.size.width = w;
+            return rect;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return  rect;
+}
+- (CGRect)annotationRectForBounds:(CGRect)rect withAnnotationPosition:(LYPieChartAnnotationPosition)annotationPosition {
+    switch (annotationPosition) {
+        case LYPieChartAnnotationPositionTop:
+        {
+            CGFloat h = rect.size.height * 0.5;
+            rect.size.height = h;
+            return rect;
+        }
+            break;
+        case LYPieChartAnnotationPositionLeft:
+        {
+            CGFloat w = rect.size.width * 0.5;
+            rect.size.width = w;
+            return rect;
+        }
+            break;
+        case LYPieChartAnnotationPositionBotton:
+        {
+            CGFloat h = rect.size.height * 0.5;
+            rect.size.height = h;
+            rect.origin.y += h;
+            return rect;
+        }
+            break;
+        case LYPieChartAnnotationPositionRight:
+        {
+            CGFloat w = rect.size.width * 0.5;
+            rect.size.width = w;
+            rect.origin.x += w;
+            return rect;
+        }
+            break;
+        
+        default:
+            break;
+    }
+    return  CGRectZero;
+}
+
+#pragma mark - lazy load
+- (NSDictionary<NSAttributedStringKey,id> *)annotationAttribute {
+    if (!_annotationAttribute) {
+        _annotationAttribute =@{
+                                NSFontAttributeName :[UIFont systemFontOfSize:13] ,
+                                NSForegroundColorAttributeName : [UIColor darkTextColor],
+                                //NSBackgroundColorAttributeName : [UIColor yellowColor]
+                                };
+    }
+    return _annotationAttribute;
 }
 
 @end

@@ -14,9 +14,18 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         self.inCircleColor = [UIColor whiteColor];
-        self.inCircleRadii = 30.0f;
+        self.inCircleRadii = 20.0f;
+        self.annotationPosition = LYPieChartAnnotationPositionLeft;
     }
     return self;
+}
+
+- (CGRect)annotationRectForBounds:(CGRect)rect withAnnotationPosition:(LYPieChartAnnotationPosition)annotationPosition {
+    CGRect rect1 = [super annotationRectForBounds:rect withAnnotationPosition:annotationPosition];
+    
+    rect1.origin.x += 20;
+    
+    return rect1;
 }
 
 @end

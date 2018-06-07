@@ -14,14 +14,16 @@
 
 /* 名称 */
 @property (nonatomic,strong) NSString * itemName;
+/* 名称的富文本 */
+@property (nonatomic,strong) NSAttributedString * itemNameAttr;
 
 /* 简介 */
 @property (nonatomic,strong) NSString * summary;
 
-/* 百分比 0 ~ 1 */
+/* 百分比  取值范围;0 ~ 1 */
 @property (nonatomic,assign) CGFloat progress;
 
-/* <#des#> */
-@property (nonatomic,assign) CGFloat rdiiOffset;
+/* 半径偏移量 相对于 外圆半径的偏移 */
+@property (nonatomic,assign) CGFloat radiiOffset;
 
 @end
