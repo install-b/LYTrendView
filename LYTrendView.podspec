@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
  
 
   s.name         = "LYTrendView"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "an iOS chart and column view"
   s.description  = "a simple Chart  line (column 、 pie) view for iOS. (简单的iOS柱状、曲线图图、饼图)"
 
@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   
   s.license      = "MIT"
 
-  s.author       = { "ShangenZhang" => "645256685@qq.com" }
+  s.author       = { "ShangenZhang" => "gkzhangshangen@163.com" }
 
-  s.platform     = :ios
+  s.platform     = :ios, "8.0"
   s.requires_arc = true
 
 
