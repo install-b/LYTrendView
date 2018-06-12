@@ -97,7 +97,7 @@ typedef void(^DrawingTitleBlock)(void);
     UIFont *font = [UIFont systemFontOfSize:11];
     if (rowY) {
         
-        CGFloat spaceY = (bottom - top) / (rowY + 0.5);
+        CGFloat spaceY = (bottom - top) / (rowY + self.verticalOutOffset);
         _spaceY = spaceY;
         UIBezierPath * sectionYPath = [UIBezierPath bezierPath];
         CGFloat tempSectionY = 0;
@@ -155,7 +155,7 @@ typedef void(^DrawingTitleBlock)(void);
         rowZ = [self.delegate numberOfSectionZForTrendView:self];
     }
     if (rowZ) {
-        CGFloat spaceZ = (bottom - top) / (rowZ + 0.5);
+        CGFloat spaceZ = (bottom - top) / (rowZ + self.verticalOutOffset);
         _spaceZ = spaceZ;
         UIBezierPath * sectionZPath = [UIBezierPath bezierPath];
         CGFloat tempSectionZ = 0;
@@ -213,7 +213,7 @@ typedef void(^DrawingTitleBlock)(void);
     }
     if (rowX) {
 
-        CGFloat spaceX = rowZ ? (right - left) / (rowX) : (right - left) / (rowX + 0.5);
+        CGFloat spaceX = rowZ ? (right - left) / (rowX) : (right - left) / (rowX + self.horizationOutOffset);
         _spaceX = spaceX;
         UIBezierPath * sectionXPath = [UIBezierPath bezierPath];
         CGFloat tempSectionX = 0;
@@ -226,7 +226,7 @@ typedef void(^DrawingTitleBlock)(void);
             if (self.sectionXSegmentType == LYSectionSegmentTypeScale) {
                 topP -= scaleLenth;
             }else if (self.sectionXSegmentType == LYSectionSegmentTypeFullLine) {
-                topP = left;
+                topP = top;
             }
             [sectionXPath addLineToPoint:CGPointMake(tempSectionX, topP)];
             if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionX:)]) {

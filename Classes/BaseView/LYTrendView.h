@@ -74,6 +74,11 @@ typedef double LYTrendValue;
 /** sectionZ line corlor */
 @property (nonatomic,strong) UIColor * sectionZColor;
 
+/** horization line out offset  0~1 */
+@property (nonatomic,assign) CGFloat horizationOutOffset;
+/** vertical line out offset  0~1 */
+@property (nonatomic,assign) CGFloat verticalOutOffset;
+
 
 /** sectionX line width */
 @property (nonatomic,assign) CGFloat sectionXBorderWidth;
