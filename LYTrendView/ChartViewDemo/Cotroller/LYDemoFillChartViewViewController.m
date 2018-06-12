@@ -52,33 +52,7 @@
                          [[LYPoint alloc] initWithPoint:CGPointMake(180, 32)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(260, 27)],
                          ]
-                 },
-//             
-//             @{
-//                 @"borderWidth" : @"1.0",
-//                 @"borderColor" : [UIColor purpleColor],
-//                 @"pointArray" : @[
-//                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 0)],
-//                         [[LYPoint alloc] initWithPoint:CGPointMake(20, 5)],
-//                         [[LYPoint alloc] initWithPoint:CGPointMake(45, 10)],
-//                         [[LYPoint alloc] initWithPoint:CGPointMake(80, 32)],
-//                         [[LYPoint alloc] initWithPoint:CGPointMake(200, 20)],
-//                         [[LYPoint alloc] initWithPoint:CGPointMake(260, 30)],
-//                         ]
-//                 },
-             
-             @{
-                 @"borderWidth" : @"1.0",
-                 @"borderColor" : [UIColor greenColor],
-                 @"pointArray" : @[
-                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 20)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(30, 10)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(130, 3)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(200, 20)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(240, 26)],
-                         [[LYPoint alloc] initWithPoint:CGPointMake(260, 23)],
-                         ]
-                 },
+                 }
              
              ];
 }
