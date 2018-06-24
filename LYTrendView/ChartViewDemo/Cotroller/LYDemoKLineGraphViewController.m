@@ -69,10 +69,9 @@
         
         [self.view addSubview:kLineGraphView];
         kLineGraphView.kLineGraphDelegate = self;
-        kLineGraphView.sectionXSegmentType = LYSectionSegmentTypeFullLine;
-        kLineGraphView.sectionYSegmentType = LYSectionSegmentTypeFullLine;
-        //kLineGraphView.sectionYValue = 40.0f / 150;
-    
+        kLineGraphView.sectionXSegmentType = LYSectionSegmentTypeDashed;
+        kLineGraphView.sectionYSegmentType = LYSectionSegmentTypeDashed;
+        
         _kLineGraphView = kLineGraphView;
     }
     return _kLineGraphView;

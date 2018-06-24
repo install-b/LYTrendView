@@ -69,7 +69,7 @@ typedef void(^DrawingTitleBlock)(void);
     // 1. location position
     CGFloat top = self.contentInsets.top;
     CGFloat left = self.sectionYSpace + self.contentInsets.left;
-    CGFloat bottom = rect.size.height - self.contentInsets.bottom - self.sectionXSpace;
+    CGFloat bottom = rect.size.height - (self.contentInsets.bottom + self.sectionXSpace);
     CGFloat right = rect.size.width - (self.contentInsets.right + self.sectionZSpace);
     
     
@@ -107,17 +107,42 @@ typedef void(^DrawingTitleBlock)(void);
         
         attributesDict = self.attributesSectionYDict;
         for (NSInteger i = 0; i < rowY; i++) {
+            
+            
             tempSectionY = bottom - (i + 1) * spaceY;
-            
-            [sectionYPath moveToPoint:CGPointMake(left, tempSectionY)];
-            
             CGFloat rightP = left;
-            if (self.sectionYSegmentType == LYSectionSegmentTypeScale) {
-                rightP += scaleLenth;
-            }else if (self.sectionYSegmentType == LYSectionSegmentTypeFullLine) {
-                rightP = right;
+            [sectionYPath moveToPoint:CGPointMake(rightP, tempSectionY)];
+            
+            switch (self.sectionYSegmentType) {
+                case LYSectionSegmentTypeScale:
+                    rightP += scaleLenth;
+                    break;
+                case LYSectionSegmentTypeDashed:
+                {
+                    rightP = left;
+                    
+                    CGFloat length = right - left;
+                    CGFloat solidLength = [self solidLengthOfSectionZDashedFormLineWith:length atSection:i];
+                    CGFloat spaceLength = [self spaceLengthOfSectionZDashedFormLineWith:length atSection:i];
+                    NSInteger number = dashLineNumber(length,solidLength,spaceLength);
+                    
+                    for (NSInteger i = 0; i < number; i++) {
+                        rightP += solidLength;
+                        [sectionYPath addLineToPoint:CGPointMake(rightP, tempSectionY)];
+                        rightP += spaceLength;
+                        [sectionYPath moveToPoint:CGPointMake(rightP, tempSectionY)];
+                    }
+                    
+                }
+                case LYSectionSegmentTypeFullLine:
+                    rightP = right;
+                    break;
+                default:
+                    break;
             }
+            
             [sectionYPath addLineToPoint:CGPointMake(rightP, tempSectionY)];
+            
             
             if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionY:)]) {
                 sectionTitle = [self.delegate trendView:self titleForSectionY:i];
@@ -166,13 +191,39 @@ typedef void(^DrawingTitleBlock)(void);
         for (NSInteger i = 0; i < rowZ; i++) {
             tempSectionZ = bottom - (i + 1) * spaceZ;
             CGFloat leftP = right;
-            if (self.sectionYSegmentType == LYSectionSegmentTypeScale) {
-                leftP -= scaleLenth;
-            }else if (self.sectionYSegmentType == LYSectionSegmentTypeFullLine) {
-                leftP = left;
-            }
+            
+            // 描点
             [sectionZPath moveToPoint:CGPointMake(leftP, tempSectionZ)];
-            [sectionZPath addLineToPoint:CGPointMake(right, tempSectionZ)];
+            
+            switch (self.sectionYSegmentType) {
+                case LYSectionSegmentTypeScale:  // 刻度
+                    leftP -= scaleLenth;
+                    break;
+                case LYSectionSegmentTypeDashed: // 虚线
+                    {
+                        CGFloat length = right - left;
+                        CGFloat solidLength = [self solidLengthOfSectionZDashedFormLineWith:length atSection:i];
+                        CGFloat spaceLength = [self spaceLengthOfSectionZDashedFormLineWith:length atSection:i];
+                        
+                        leftP = right;
+                        
+                        NSInteger number = dashLineNumber(length,solidLength,spaceLength);
+                        
+                        for (NSInteger i = 0; i < number; i++) {
+                            leftP -= solidLength;
+                            [sectionZPath addLineToPoint:CGPointMake(leftP, tempSectionZ)];
+                            leftP -= spaceLength;
+                            [sectionZPath moveToPoint:CGPointMake(leftP, tempSectionZ)];
+                        }
+                    }
+                case LYSectionSegmentTypeFullLine: // 实线
+                     leftP = left;
+                    break;
+                default:
+                    break;
+            }
+            // 连线
+            [sectionZPath addLineToPoint:CGPointMake(leftP, tempSectionZ)];
             
             if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionZ:)]) {
                 sectionTitle = [self.delegate trendView:self titleForSectionZ:i];
@@ -221,14 +272,41 @@ typedef void(^DrawingTitleBlock)(void);
         attributesDict = self.attributesSectionXDict;
         for (NSInteger i = 0; i < rowX; i++) {
             tempSectionX = left + (i + 1) * spaceX;
-            [sectionXPath moveToPoint:CGPointMake(tempSectionX, bottom)];
             CGFloat topP = bottom;
-            if (self.sectionXSegmentType == LYSectionSegmentTypeScale) {
-                topP -= scaleLenth;
-            }else if (self.sectionXSegmentType == LYSectionSegmentTypeFullLine) {
-                topP = top;
+            [sectionXPath moveToPoint:CGPointMake(tempSectionX, bottom)];
+            
+            switch (self.sectionXSegmentType) {
+                case LYSectionSegmentTypeScale:
+                    topP -= scaleLenth;
+                    break;
+                case LYSectionSegmentTypeDashed:
+                   {
+                       topP = bottom;
+                      
+                       CGFloat length = bottom - top;
+                       CGFloat solidLength = [self solidLengthOfSectionZDashedFormLineWith:length atSection:i];
+                       CGFloat spaceLength = [self spaceLengthOfSectionZDashedFormLineWith:length atSection:i];
+                      
+                       NSInteger number = dashLineNumber(length,solidLength,spaceLength);
+                    
+                       for (NSInteger i = 0; i < number; i++) {
+                           topP -= solidLength;
+                           [sectionXPath addLineToPoint:CGPointMake(tempSectionX, topP)];
+                           topP -= spaceLength;
+                           [sectionXPath moveToPoint:CGPointMake(tempSectionX, topP)];
+                       }
+                   }
+                case LYSectionSegmentTypeFullLine:
+                    topP = top;
+                    break;
+                    
+                default:
+                    break;
             }
+            // 连线到顶端
             [sectionXPath addLineToPoint:CGPointMake(tempSectionX, topP)];
+
+    
             if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionX:)]) {
                 sectionTitle = [self.delegate trendView:self titleForSectionX:i];
                 [sectionTitle drawAtPoint:CGPointMake(tempSectionX - spaceX,titleY)withAttributes:attributesDict];
@@ -282,7 +360,16 @@ typedef void(^DrawingTitleBlock)(void);
     [axesZPath stroke];
 }
 
-
+// 
+static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spaceLength) {
+    CGFloat perLenth = solidLength + spaceLength;
+    CGFloat tempNumber = length/perLenth;
+    NSInteger number = (NSInteger)tempNumber;
+    if ((tempNumber - number) * perLenth > solidLength) {
+        number += 1;
+    }
+    return number;
+}
 
 #pragma mark - pravit method
 
@@ -395,6 +482,31 @@ typedef void(^DrawingTitleBlock)(void);
     return _attributesSectionZDict;
 }
 @end
+
+
+
+@implementation LYTrendView (SectionLine)
+- (CGFloat)solidLengthOfSectionXDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section {
+    return 5.0f;
+}
+- (CGFloat)spaceLengthOfSectionXDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section {
+    return 3.0f;
+}
+
+- (CGFloat)solidLengthOfSectionYDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section {
+    return 5.0f;
+}
+- (CGFloat)spaceLengthOfSectionYDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section {
+    return 3.0f;
+}
+- (CGFloat)solidLengthOfSectionZDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section {
+    return 5.0f;
+}
+- (CGFloat)spaceLengthOfSectionZDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section{
+    return 3.0f;
+}
+@end
+
 
 
 @implementation LYTrendView (TranferPoint)

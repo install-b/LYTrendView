@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor yellowColor];
-        self.contentInsets = UIEdgeInsetsMake(10, 5, 10, 5);
+        self.contentInsets = UIEdgeInsetsMake(10, 5, 10, 10);
         self.insetsBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
         self.axesXColor = [UIColor orangeColor];
         self.axesYColor = [UIColor cyanColor];
@@ -28,7 +28,7 @@
         self.sectionYValue = 10.0f;
         self.attributesSectionXDict[NSForegroundColorAttributeName] = [UIColor redColor];
        
-        
+        self.sectionXSegmentType = LYSectionSegmentTypeDashed;
         self.sectionYSegmentType = LYSectionSegmentTypeFullLine;
         self.sectionYColor = [UIColor lightGrayColor];
         self.sectionYBorderWidth = 0.5f;

@@ -45,7 +45,7 @@
                  @"borderWidth" : @"1.0",
                  @"borderColor" : [UIColor redColor],
                  @"pointArray" : @[
-                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 0)],
+                         [[LYPoint alloc] initWithPoint:CGPointMake(0, 5)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(40, 25)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(100, 15)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(140, 25)],

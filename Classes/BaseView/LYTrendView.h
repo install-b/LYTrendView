@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger,LYSectionSegmentType) {
     LYSectionSegmentTypeScale,
     LYSectionSegmentTypeNone,
     LYSectionSegmentTypeFullLine,
+    LYSectionSegmentTypeDashed,
 };
 
 typedef NS_ENUM(NSInteger,LYColumnValueType) {
@@ -114,6 +115,18 @@ typedef double LYTrendValue;
 @property (nonatomic,copy)NSString * sectionYLabelText;
 /** sectionYLabelText */
 @property (nonatomic,copy)NSString * sectionZLabelText;
+@end
+
+@interface LYTrendView (SectionLine)
+
+- (CGFloat)solidLengthOfSectionXDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section;
+- (CGFloat)spaceLengthOfSectionXDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section;
+
+- (CGFloat)solidLengthOfSectionYDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section;
+- (CGFloat)spaceLengthOfSectionYDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section;
+
+- (CGFloat)solidLengthOfSectionZDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section;
+- (CGFloat)spaceLengthOfSectionZDashedFormLineWith:(CGFloat)lineWith atSection:(NSInteger)section;
 @end
 
 @interface LYTrendView (TranferPoint)
