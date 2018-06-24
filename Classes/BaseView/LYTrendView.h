@@ -42,6 +42,10 @@ typedef double LYTrendValue;
 /** section Z value size default is 1.0 */
 @property(nonatomic,assign) CGFloat sectionZValue;
 
+/* <#des#> */
+@property (nonatomic,assign) CGPoint originYValueOffset;
+@property (nonatomic,assign) CGPoint originZValueOffset;
+
 /** axesX color */
 @property (nonatomic,strong) UIColor * axesXColor;
 /** axesY color */
@@ -115,6 +119,7 @@ typedef double LYTrendValue;
 @property (nonatomic,copy)NSString * sectionYLabelText;
 /** sectionYLabelText */
 @property (nonatomic,copy)NSString * sectionZLabelText;
+
 @end
 
 @interface LYTrendView (SectionLine)
@@ -159,6 +164,9 @@ typedef double LYTrendValue;
 - (void)autoAdjustSectionZValueWithMaxValue:(LYTrendValue)value;
 
 - (void)autoAdjustSectionXValueWithMaxValue:(LYTrendValue)value;
+
+- (void)addjustSectionYValueWithScale:(CGFloat)scale offsetValue:(LYTrendValue)value;
+
 @end
 
 

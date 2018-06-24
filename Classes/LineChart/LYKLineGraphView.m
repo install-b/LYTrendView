@@ -13,8 +13,6 @@
 
 
 @interface LYKLineGraphView ()
-/* <#des#> */
-@property (nonatomic,strong) NSArray <LYTimeTrendModel *>* visibleModels;
 
 /* <#des#> */
 @property (nonatomic,strong) NSArray <LYTimeTrendModel *>* models;
@@ -24,6 +22,9 @@
 @property (nonatomic,assign) CGFloat horizontalOffset;
 /* <#des#> */
 @property (nonatomic,assign) CGPoint panStartPoint;
+
+/* <#des#> */
+@property (nonatomic,assign) double originPointPrice;
 
 @end
 
@@ -58,7 +59,7 @@
         return;
     }
     _horizontalOffset = horizontalOffset;
-    [self setNeedsDisplay];
+    [self p_updateKLineGraphView];
 }
 - (void)pichGestureEvent:(UIPinchGestureRecognizer *)pich {
     //(1 - pich.scale) * 0.5
@@ -135,6 +136,9 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
+    
+    [self p_addjustKLineGraphValue];
+    
     CGFloat graphW = self.graphWidth + self.graphMargin;
     CGFloat halfWidth = 0.5 * self.graphWidth;
 
@@ -194,20 +198,79 @@
         [kKinePath addLineToPoint:CGPointMake(right, bottom)];
         [kKinePath addLineToPoint:CGPointMake(vernierX, bottom)];
         
+       
         [fillColor set];
         [kKinePath stroke];
-        
         [kKinePath fill];
-        
+       
         vernierX -= graphW;
     }];
    
 }
 
 - (void)p_updateKLineGraphView {
-    
+    //[super drawRect:self.bounds];
     // 重绘
     [self setNeedsDisplay];
+}
+
+- (void)p_addjustKLineGraphValue {
+    
+    __block CGFloat max_price = 0;
+    __block CGFloat min_price = 0;
+    
+    NSArray <LYTimeTrendModel *>* array = [self p_visibleArray];
+    [array enumerateObjectsUsingBlock:^(LYTimeTrendModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        max_price = MAX(obj.highestPrice, max_price);
+        min_price = MIN(obj.bottomPrice, min_price);
+    }];
+    
+    //NSLog(@"max_price = %f   min_price = %f",max_price,min_price);
+    
+    CGFloat top_bottom_space = 30;
+    CGFloat screen_show_H = self.sectionBottom - self.contentInsets.top;
+    if (screen_show_H <= (2 * top_bottom_space)) {
+        top_bottom_space = screen_show_H * 0.1;
+    } else if (screen_show_H <= (5 * top_bottom_space)) {
+        top_bottom_space *= 0.5;
+    }
+    
+    CGFloat scaleY = (max_price - min_price) / (screen_show_H - 2 * top_bottom_space);
+    
+    [self addjustSectionYValueWithScale:scaleY offsetValue:top_bottom_space * scaleY];
+    
+}
+
+- (NSArray <LYTimeTrendModel *>*)p_visibleArray {
+    CGFloat length = self.sectionRight - self.sectionLeft;
+    if (length <= 0) {
+        return nil;
+    }
+    
+    CGFloat graphW = self.graphWidth + self.graphMargin;
+    
+    NSInteger visibleNumber  = 0;
+    NSInteger lastRemoveNumber = 0;
+    
+    if (_horizontalOffset >= 0) {
+        lastRemoveNumber = (NSInteger)((_horizontalOffset + 0.5 * self.graphWidth) / graphW);
+        visibleNumber = (NSInteger)((length + _horizontalOffset + 0.5 * self.graphWidth)/graphW);
+    } else {
+        visibleNumber = (NSInteger)((length - _horizontalOffset + 0.5 * self.graphWidth)/graphW);
+    }
+    
+    NSArray *visiableArray =  nil;
+    NSInteger objecNumber = self.models.count;
+    visibleNumber = MIN(visibleNumber, objecNumber);
+
+    if (visibleNumber > 0) {
+        NSInteger loc = objecNumber - visibleNumber;
+        loc = (loc > 0) ? loc : 0;
+        NSInteger len = visibleNumber - lastRemoveNumber;
+        len = (len > 0) ? len : 0;
+        visiableArray = [self.models subarrayWithRange:NSMakeRange(loc, len)];
+    }
+    return visiableArray;
 }
 
 - (void)appendTimeTrendModel:(NSArray <LYTimeTrendModel *>*)models {

@@ -511,32 +511,38 @@ static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spac
 
 @implementation LYTrendView (TranferPoint)
 - (CGPoint)tranferScreenPointWithValuePoint:(CGPoint)valuePoint valueType:(LYColumnValueType)valueType{
-    
-    CGFloat scaleY = (valueType == LYColumnValueTypeY) ?
-                    _sectionYWidth / _sectionYValue  :
-                    _sectionZWidth / _sectionZValue ;
+
+    CGFloat scaleY = 1.0;
+    CGPoint valueOffset;
+    if (valueType == LYColumnValueTypeY) {
+        valueOffset = self.originYValueOffset;
+        scaleY = _sectionYWidth / _sectionYValue;
+    }else {
+        scaleY =  _sectionZWidth / _sectionZValue ;
+        valueOffset = self.originZValueOffset;
+    }
     
     CGFloat scaleX = _sectionXWidth / _sectionXValue ;
     
-    return CGPointMake(valuePoint.x * scaleX + self.originalPoint.x, self.originalPoint.y - valuePoint.y * scaleY);
+    return CGPointMake((valuePoint.x + valueOffset.x ) * scaleX + self.originalPoint.x, self.originalPoint.y - (valuePoint.y + valueOffset.y) * scaleY );
 }
 - (CGFloat)lenthFromValue:(CGFloat)value withValueType:(LYColumnValueType)valueType {
     CGFloat scale = (valueType == LYColumnValueTypeY) ?
     _sectionYWidth / _sectionYValue  :
     _sectionZWidth / _sectionZValue ;
-    
+   
     return value * scale;
 }
 
 
 - (CGFloat)sectionXValueFormPointX:(CGFloat)px {
-    return (px - self.originalPoint.x) * self.sectionXValue / self.sectionXWidth;
+    return (px - self.originalPoint.x) * self.sectionXValue / self.sectionXWidth + self.originYValueOffset.x;
 }
 - (CGFloat)sectionYValueFormPointY:(CGFloat)py {
-    return (self.originalPoint.y - py) * self.sectionYValue / self.sectionYWidth;
+    return (self.originalPoint.y - py) * self.sectionYValue / self.sectionYWidth + self.originYValueOffset.y;
 }
 - (CGFloat)sectionZValueFormPointZ:(CGFloat)py {
-    return (self.originalPoint.y - py) * self.sectionZValue / self.sectionZWidth;
+    return (self.originalPoint.y - py) * self.sectionZValue / self.sectionZWidth + self.originZValueOffset.y;
 }
 @end
 
@@ -556,4 +562,12 @@ static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spac
     
     self.sectionXValue = ly_fixDoubleValueToInterValue(value, sectionXCount,0,NULL,NULL);
 }
+
+- (void)addjustSectionYValueWithScale:(CGFloat)scaleY offsetValue:(LYTrendValue)value {
+    self.sectionYValue = scaleY * self.sectionYWidth;
+    CGPoint p = self.originYValueOffset;
+    p.y = value;
+    self.originYValueOffset = p;
+}
+
 @end
