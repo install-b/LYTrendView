@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor darkGrayColor];
     
     // 添加k线数据
     [self.kLineGraphView appendTimeTrendModel:[self models]];
@@ -71,6 +71,7 @@
         kLineGraphView.kLineGraphDelegate = self;
         kLineGraphView.sectionXSegmentType = LYSectionSegmentTypeDashed;
         kLineGraphView.sectionYSegmentType = LYSectionSegmentTypeDashed;
+        kLineGraphView.backgroundColor = [UIColor colorWithRed:0.10 green:0.15 blue:0.20 alpha:0.98];
         
         _kLineGraphView = kLineGraphView;
     }

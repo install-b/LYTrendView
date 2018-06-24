@@ -147,8 +147,8 @@ typedef double LYTrendValue;
 
 
 - (CGFloat)sectionXValueFormPointX:(CGFloat)px;
-- (CGFloat)sectionYValueFormPointX:(CGFloat)py;
-- (CGFloat)sectionZValueFormPointX:(CGFloat)py;
+- (CGFloat)sectionYValueFormPointY:(CGFloat)py;
+- (CGFloat)sectionZValueFormPointZ:(CGFloat)pz;
 
 @end
 

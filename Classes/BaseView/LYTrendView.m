@@ -532,10 +532,10 @@ static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spac
 - (CGFloat)sectionXValueFormPointX:(CGFloat)px {
     return (px - self.originalPoint.x) * self.sectionXValue / self.sectionXWidth;
 }
-- (CGFloat)sectionYValueFormPointX:(CGFloat)py {
+- (CGFloat)sectionYValueFormPointY:(CGFloat)py {
     return (self.originalPoint.y - py) * self.sectionYValue / self.sectionYWidth;
 }
-- (CGFloat)sectionZValueFormPointX:(CGFloat)py {
+- (CGFloat)sectionZValueFormPointZ:(CGFloat)py {
     return (self.originalPoint.y - py) * self.sectionZValue / self.sectionZWidth;
 }
 @end
