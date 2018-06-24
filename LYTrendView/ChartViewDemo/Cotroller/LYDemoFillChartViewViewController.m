@@ -51,6 +51,7 @@
                          [[LYPoint alloc] initWithPoint:CGPointMake(140, 25)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(180, 32)],
                          [[LYPoint alloc] initWithPoint:CGPointMake(260, 27)],
+                         [[LYPoint alloc] initWithPoint:CGPointMake(300, 36)],
                          ]
                  }
              

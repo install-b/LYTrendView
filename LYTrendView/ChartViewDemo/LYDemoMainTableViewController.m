@@ -9,7 +9,7 @@
 #import "LYDemoMainTableViewController.h"
 
 @interface LYDemoMainTableViewController ()
-/** <#des#> */
+/** 数据源 */
 @property (nonatomic,strong) NSArray <NSDictionary *> * demoes;
 @end
 
@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"title list";
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell_reuse_id"];
     
     self.demoes = [self dataSource];
@@ -51,20 +53,24 @@
 - (NSArray <NSDictionary *>*)dataSource {
     return @[
              @{
-                 @"title" : @"曲线图DEMO",
+                 @"title" : @"曲线图 DEMO",
                  @"pushVc" : @"LYDemoLineChartViewController"
                  },
              @{
-                 @"title" : @"填充曲线图DEMO",
+                 @"title" : @"填充曲线图 DEMO",
                  @"pushVc" : @"LYDemoFillChartViewViewController"
                  },
              @{
-                 @"title" : @"柱状图DEMO",
+                 @"title" : @"柱状图 DEMO",
                  @"pushVc" : @"LYDemoColumnViewController"
                  },
              @{
-                 @"title" : @"饼图DEMO",
+                 @"title" : @"饼图 DEMO",
                  @"pushVc" : @"LYDemoPieViewController"
+                 },
+             @{
+                 @"title" : @"k线图 DEMO",
+                 @"pushVc" : @"LYDemoKLineGraphViewController"
                  },
              
              ];
