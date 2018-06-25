@@ -7,12 +7,12 @@
 //
 
 #import "LYDemoKLineGraphViewController.h"
-#import "LYKLineGraphView.h"
+#import "LYDemoKLineGraphView.h"
 
 @interface LYDemoKLineGraphViewController () <LYKLineGraphViewDelegate>
 
 /* <#des#> */
-@property (nonatomic,weak) LYKLineGraphView * kLineGraphView;
+@property (nonatomic,weak) LYDemoKLineGraphView * kLineGraphView;
 
 @end
 
@@ -60,16 +60,13 @@
 
 
 #pragma mark - kLineGraphView
-- (LYKLineGraphView *)kLineGraphView {
+- (LYDemoKLineGraphView *)kLineGraphView {
     if (!_kLineGraphView) {
-        LYKLineGraphView *kLineGraphView = [[LYKLineGraphView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 200)];
+        LYDemoKLineGraphView *kLineGraphView = [[LYDemoKLineGraphView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 280)];
         
         [self.view addSubview:kLineGraphView];
         kLineGraphView.kLineGraphDelegate = self;
-        kLineGraphView.sectionXSegmentType = LYSectionSegmentTypeDashed;
-        kLineGraphView.sectionYSegmentType = LYSectionSegmentTypeDashed;
-        //kLineGraphView.backgroundColor = [UIColor colorWithRed:0.10 green:0.15 blue:0.20 alpha:0.98];
-        kLineGraphView.insetsBackgroundColor = [UIColor colorWithRed:0.10 green:0.15 blue:0.20 alpha:0.98];
+        
         _kLineGraphView = kLineGraphView;
     }
     return _kLineGraphView;

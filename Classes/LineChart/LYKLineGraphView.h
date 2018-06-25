@@ -40,6 +40,15 @@
 @protocol LYKLineGraphViewDelegate <LYTrendViewDelegate>
 @optional
 
+/**
+ 点击查看详情的时候返回一个显示的时间
+
+ @param model 当前时间的模型
+ @param offset 离当前时间的模型 的距离  如果当前点击的点是存在模型则偏移量为0 当点击的点没有时间趋势模型 则获取到最近的模型传递出来正数为右边
+ @return 显示时间
+ */
+- (NSString *)kLineGraphView:(LYKLineGraphView *)kLineGraphView dateStringWhenTouchWithModel:(LYTimeTrendModel *)model atSectionOffset:(NSInteger)offset;
+
 @end
 
 
