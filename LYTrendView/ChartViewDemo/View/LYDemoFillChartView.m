@@ -14,7 +14,7 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         self.contentInsets = UIEdgeInsetsMake(10, 5, 10, 10);
-        //self.insetsBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    
         self.axesXColor = [UIColor darkGrayColor];
         self.axesYColor = [UIColor darkGrayColor];
         self.axesZColor = [UIColor darkGrayColor];

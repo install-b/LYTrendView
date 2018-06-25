@@ -21,15 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.pieChartView.pieModels = [self pieModels];
+    self.title = @"点解获取更多展示效果";
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     
     switch (self.touchCount) {
-        case 0:
-            self.pieChartView.pieModels = [self pieModels];
-            break;
+//        case 0:
+//            self.pieChartView.pieModels = [self pieModels];
+//            break;
         case 1:{
              self.pieChartView.annotationPosition = LYPieChartAnnotationPositionRight;
             [self.pieChartView setNeedsDisplay];
@@ -67,6 +69,15 @@
             break;
     }
     self.touchCount += 1;
+}
+- (LYDemoPieChartView *)pieChartView {
+    if (!_pieChartView) {
+        LYDemoPieChartView *pieChartView = [[LYDemoPieChartView alloc] initWithFrame:CGRectMake(50, 100, 250, 250)];
+        
+        [self.view addSubview:pieChartView];
+        _pieChartView = pieChartView;
+    }
+    return _pieChartView;
 }
 
 
@@ -122,14 +133,5 @@
              ];
 }
 
-- (LYDemoPieChartView *)pieChartView {
-    if (!_pieChartView) {
-        LYDemoPieChartView *pieChartView = [[LYDemoPieChartView alloc] initWithFrame:CGRectMake(50, 100, 250, 250)];
-        
-        [self.view addSubview:pieChartView];
-        _pieChartView = pieChartView;
-    }
-    return _pieChartView;
-}
 
 @end
