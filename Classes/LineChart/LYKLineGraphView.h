@@ -31,28 +31,8 @@
 @end
 
 
-@class LYKLineGraphView;
 
-
-/**
- k 线视图 代理协议
- */
-@protocol LYKLineGraphViewDelegate <LYTrendViewDelegate>
-@optional
-
-/**
- 点击查看详情的时候返回一个显示的时间
-
- @param model 当前时间的模型
- @param offset 离当前时间的模型 的距离  如果当前点击的点是存在模型则偏移量为0 当点击的点没有时间趋势模型 则获取到最近的模型传递出来正数为右边
- @return 显示时间
- */
-- (NSString *)kLineGraphView:(LYKLineGraphView *)kLineGraphView dateStringWhenTouchWithModel:(LYTimeTrendModel *)model atSectionOffset:(NSInteger)offset;
-
-@end
-
-
-
+@protocol LYKLineGraphViewDelegate;
 
 /**
  k 线视图
@@ -99,3 +79,49 @@
                             atScreenHeight:(CGFloat)screen_show_H
                                     margin:(CGFloat *)margin;
 @end
+
+
+/**
+ k 线视图 代理协议
+ */
+@protocol LYKLineGraphViewDelegate <LYTrendViewDelegate>
+@optional
+
+
+/**
+ 长按选择了K线 模型
+ 
+ @param kLineGraphView K线图
+ @param model 选择的模型
+ @param offset 离当前时间的模型 的距离  如果当前点击的点是存在模型则偏移量为0 当点击的点没有时间趋势模型 则获取到最近的模型传递出来正数为右边
+ */
+- (void)kLineGraphView:(LYKLineGraphView *)kLineGraphView didTouchTimeTrendModel:(LYTimeTrendModel *)model atSectionOffset:(NSInteger)offset;
+
+
+/**
+ 取消长按选择
+ 
+ @param kLineGraphView K线图
+ */
+- (void)kLineGraphViewDidCancelTouch:(LYKLineGraphView *)kLineGraphView;
+
+/**
+ 根据价格 返回显示价格字符串 实现代理可以
+ 
+ @param kLineGraphView k线图
+ @param price 价格
+ @return 选择区域的显示价格
+ */
+- (NSString *)kLineGraphView:(LYKLineGraphView *)kLineGraphView priceStringWhenTouchWithPrice:(CGFloat)price;
+
+/**
+ 点击查看详情的时候返回一个显示的时间
+ 
+ @param model 当前时间的模型
+ @param offset 离当前时间的模型 的距离  如果当前点击的点是存在模型则偏移量为0 当点击的点没有时间趋势模型 则获取到最近的模型传递出来正数为右边
+ @return 显示时间
+ */
+- (NSString *)kLineGraphView:(LYKLineGraphView *)kLineGraphView dateStringWhenTouchWithModel:(LYTimeTrendModel *)model atSectionOffset:(NSInteger)offset;
+
+@end
+

@@ -37,8 +37,8 @@
 #pragma mark - LYKLineGraphView extension
 @interface LYKLineGraphView () <UIGestureRecognizerDelegate>
 {
-    _LYLongPressPoint * _longPress;   // 控制显示点击的模型
-    NSArray <_LYColorBezierPath *>* _kLinePaths; // K线 路径做一个缓存  发生变化设置为nil 重新加载
+    _LYLongPressPoint *             _longPress;   // 控制显示点击的模型
+    NSArray <_LYColorBezierPath *>* _kLinePaths;  // K线 路径做一个缓存  发生变化设置为nil 重新加载
 }
 
 /* 控制显示点击的模型 懒加载 */
@@ -47,7 +47,7 @@
 /* 数据源 */
 @property (nonatomic,strong) NSArray <LYTimeTrendModel *>* models;
 
-/* k 线 水平偏移量 */
+/* k线 水平偏移量 */
 @property (nonatomic,assign) CGFloat horizontalOffset;
 
 /* 移动手势的位置 */
@@ -55,7 +55,7 @@
 
 @end
 
-#pragma mark - LYKLineGraphView (GestureEvent) implementation
+#pragma mark - LYKLineGraphView (GestureEvent) implementation //> k 线图分类  点击事件处理 实现
 @implementation LYKLineGraphView (GestureEvent)
 // 长按手势
 - (void)longPressGestureEvent:(UILongPressGestureRecognizer *)longPress {
@@ -108,8 +108,10 @@
                 }
                 self.longPress.model = model;
                 self.longPress.offsetIndex = offsetIndex;
-                // send delegate
-                NSLog(@"NEW OBJC ---");
+                // send msg delegate
+                if ([self.kLineGraphDelegate respondsToSelector:@selector(kLineGraphView:didTouchTimeTrendModel:atSectionOffset:)]) {
+                    [self.kLineGraphDelegate kLineGraphView:self didTouchTimeTrendModel:model atSectionOffset:offsetIndex];
+                }
             }
             self.longPress.longPressPoint = currentP;
             [self setNeedsDisplay];
@@ -120,6 +122,10 @@
         case UIGestureRecognizerStateEnded:
         {
             _longPress = nil;
+            // send to delegate
+            if ([self.kLineGraphDelegate respondsToSelector:@selector(kLineGraphViewDidCancelTouch:)]) {
+                [self.kLineGraphDelegate kLineGraphViewDidCancelTouch:self];
+            }
             [self setNeedsDisplay];
         }
         default:
@@ -221,7 +227,7 @@
 @end
 
 
-#pragma mark - LYKLineGraphView implementation
+#pragma mark - LYKLineGraphView implementation  //> k 线图实现
 @implementation LYKLineGraphView
 // K线代理 强制转化
 - (void)setKLineGraphDelegate:(id<LYKLineGraphViewDelegate>)kLineGraphDelegate {
@@ -261,14 +267,14 @@
 
         UIBezierPath *showPath = [UIBezierPath bezierPath];
         NSDictionary *attr = @{
-                               NSFontAttributeName : [UIFont systemFontOfSize:13],
+                               NSFontAttributeName : [UIFont systemFontOfSize:11],
                                NSForegroundColorAttributeName : [UIColor whiteColor],
                                };
         
         // 当前价格
-        NSString *price = [NSString stringWithFormat:@"%.4f",[self sectionYValueFormPointY:self.longPress.longPressPoint.y]];
+        NSString *priceStr = [self p_priceStringWithPrice:[self sectionYValueFormPointY:self.longPress.longPressPoint.y]];
         
-        CGSize priceSize = [price sizeWithAttributes:attr];
+        CGSize priceSize = [priceStr sizeWithAttributes:attr];
         
         priceSize.width += (textSpace * 2);
         
@@ -277,7 +283,7 @@
         CGPoint p3 = CGPointMake(p1.x + priceSize.width, p2.y);
         CGPoint p4 = CGPointMake(p3.x, p1.y);
         // 显示价格
-        [price drawInRect:CGRectMake(p1.x + textSpace, p1.y, priceSize.width, priceSize.height) withAttributes:attr];
+        [priceStr drawInRect:CGRectMake(p1.x + textSpace, p1.y, priceSize.width, priceSize.height) withAttributes:attr];
         
         // 横轴
         [showPath moveToPoint:p1];
@@ -325,8 +331,13 @@
     
 }
 
-#pragma mark - private method
-
+#pragma mark - private method  //> 内部方法
+- (NSString *)p_priceStringWithPrice:(CGFloat)price {
+    if ([self.kLineGraphDelegate respondsToSelector:@selector(kLineGraphView:priceStringWhenTouchWithPrice:)]) {
+        return [self.kLineGraphDelegate kLineGraphView:self priceStringWhenTouchWithPrice:price];
+    }
+   return [NSString stringWithFormat:@"%.4f",price];
+}
 - (NSString *)p_getShowDateString {
     LYTimeTrendModel *model = self.longPress.model;
     NSString *str = nil;
@@ -481,7 +492,7 @@
     [self addjustSectionYValueWithScale:scaleY offsetValue:top_bottom_space * scaleY];
 }
 
-#pragma mark - publick mothod
+#pragma mark - publick mothod //> 对外接口
 - (void)appendTimeTrendModel:(NSArray <LYTimeTrendModel *>*)models {
     if (models.count) {
         _models = _models ? [models arrayByAddingObjectsFromArray:_models] : models.copy;
@@ -534,7 +545,7 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark - over write setter >// setter  重写
+#pragma mark - over write setter  //> setter  重写
 - (void)setGraphWidth:(CGFloat)graphWidth {
     if (_graphWidth == graphWidth) {
         return;
@@ -560,7 +571,7 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark - custom setting method 子类可实现
+#pragma mark - custom setting method //> 自定义设置 子类可实现
 - (BOOL)shouldFillKLinePath {
     return YES;
 }
@@ -579,7 +590,7 @@
     
     return (priceDifference) / (screen_show_H - 2 * top_bottom_space);
 }
-#pragma mark - lazy load
+#pragma mark - lazy load //> 懒加载
 - (_LYLongPressPoint *)longPress {
     if (!_longPress) {
         _longPress = [[_LYLongPressPoint alloc] init];
