@@ -514,6 +514,7 @@ static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spac
 
     CGFloat scaleY = 1.0;
     CGPoint valueOffset;
+    
     if (valueType == LYColumnValueTypeY) {
         valueOffset = self.originYValueOffset;
         scaleY = _sectionYWidth / _sectionYValue;
@@ -524,7 +525,9 @@ static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spac
     
     CGFloat scaleX = _sectionXWidth / _sectionXValue ;
     
-    return CGPointMake((valuePoint.x + valueOffset.x ) * scaleX + self.originalPoint.x, self.originalPoint.y - (valuePoint.y + valueOffset.y) * scaleY );
+    CGFloat x = self.originalPoint.x + (valuePoint.x + valueOffset.x) * scaleX ;
+    CGFloat y = self.originalPoint.y - (valuePoint.y - valueOffset.y) * scaleY ;
+    return CGPointMake(x,y);
 }
 - (CGFloat)lenthFromValue:(CGFloat)value withValueType:(LYColumnValueType)valueType {
     CGFloat scale = (valueType == LYColumnValueTypeY) ?

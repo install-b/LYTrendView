@@ -19,10 +19,11 @@
 		A715E0FE20C81A11000BCC58 /* LYPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A715E0FD20C81A11000BCC58 /* LYPieChartView.m */; };
 		A715E10120C82111000BCC58 /* LYPieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A715E10020C82111000BCC58 /* LYPieModel.m */; };
 		A724C8FD20E07EE100E2D78B /* LYDemoKLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A724C8FC20E07EE100E2D78B /* LYDemoKLineGraphView.m */; };
+		A72832AB20E21753005ECCF2 /* LYDemoKLineGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7313DFE20DCE695006FCDA3 /* LYDemoKLineGraphViewController.m */; };
+		A72832AC20E217BF005ECCF2 /* LYKLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A9D2F520DC9A1E00D44E54 /* LYKLineGraphView.m */; };
 		A72C976720C8DECC0077263C /* LYDemoPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C976620C8DECC0077263C /* LYDemoPieViewController.m */; };
 		A72C976A20C8DF430077263C /* LYDemoPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C976920C8DF430077263C /* LYDemoPieChartView.m */; };
 		A72C976D20C932B40077263C /* LYChartBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C976C20C932B40077263C /* LYChartBaseView.m */; };
-		A7313DFF20DCE695006FCDA3 /* LYDemoKLineGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7313DFE20DCE695006FCDA3 /* LYDemoKLineGraphViewController.m */; };
 		A7355CFC1F6144A2000F5382 /* LYDemoLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7355CFB1F6144A2000F5382 /* LYDemoLineChartView.m */; };
 		A742C485205784460056CE25 /* LYTrendView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47A205784460056CE25 /* LYTrendView.m */; };
 		A742C486205784460056CE25 /* LYColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A742C47B205784460056CE25 /* LYColumnView.m */; };
@@ -35,7 +36,6 @@
 		A75CC93A2057D97B007C386A /* LYDemoColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75CC9392057D97B007C386A /* LYDemoColumnViewController.m */; };
 		A75CC93D2057DC7D007C386A /* LYDemoColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A75CC93C2057DC7D007C386A /* LYDemoColumnView.m */; };
 		A75CE5B320DC9B9E00F8C22C /* LYChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A75CE5B220DC9B9E00F8C22C /* LYChartLine.m */; };
-		A7A9D2F620DC9A1E00D44E54 /* LYKLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A9D2F520DC9A1E00D44E54 /* LYKLineGraphView.m */; };
 		A7E14FF11E9F692B005467B5 /* LYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E14FF01E9F692B005467B5 /* LYPoint.m */; };
 /* End PBXBuildFile section */
 
@@ -361,7 +361,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7117C4B1E9CDBCE00F8FEEB /* LYDemoLineChartViewController.m in Sources */,
-				A7A9D2F620DC9A1E00D44E54 /* LYKLineGraphView.m in Sources */,
 				A7355CFC1F6144A2000F5382 /* LYDemoLineChartView.m in Sources */,
 				A715E0EF20C80BF2000BCC58 /* LYDemoFillChartView.m in Sources */,
 				A715E10120C82111000BCC58 /* LYPieModel.m in Sources */,
@@ -370,7 +369,7 @@
 				A75CC93D2057DC7D007C386A /* LYDemoColumnView.m in Sources */,
 				A742C48B205784460056CE25 /* NSString+LYSize.m in Sources */,
 				A715E0EC20C7CD5B000BCC58 /* LYFillChartView.m in Sources */,
-				A7313DFF20DCE695006FCDA3 /* LYDemoKLineGraphViewController.m in Sources */,
+				A72832AB20E21753005ECCF2 /* LYDemoKLineGraphViewController.m in Sources */,
 				A7117C481E9CDBCE00F8FEEB /* AppDelegate.m in Sources */,
 				A742C488205784460056CE25 /* LYTendMath.c in Sources */,
 				A742C48A205784460056CE25 /* UIBezierPath+SmoothLine.m in Sources */,
@@ -383,6 +382,7 @@
 				A7117C451E9CDBCE00F8FEEB /* main.m in Sources */,
 				A72C976720C8DECC0077263C /* LYDemoPieViewController.m in Sources */,
 				A75CC93A2057D97B007C386A /* LYDemoColumnViewController.m in Sources */,
+				A72832AC20E217BF005ECCF2 /* LYKLineGraphView.m in Sources */,
 				A715E0F520C81198000BCC58 /* LYTitlePoint.m in Sources */,
 				A75CE5B320DC9B9E00F8C22C /* LYChartLine.m in Sources */,
 				A742C487205784460056CE25 /* LYLineChartView.m in Sources */,

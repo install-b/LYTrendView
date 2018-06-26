@@ -28,6 +28,12 @@
 /* 收盘价 */
 @property (nonatomic,assign) CGFloat closingPrice;
 
+
+/* 成交量 */
+@property (nonatomic,assign) CGFloat volume;
+/* 成交额 */
+@property (nonatomic,assign) CGFloat exchange;
+
 @end
 
 

@@ -53,6 +53,8 @@
 /* 移动手势的位置 */
 @property (nonatomic,assign) CGPoint panStartPoint;
 
+/* <#des#> */
+@property (nonatomic,assign) CGFloat maxVOL;
 @end
 
 #pragma mark - LYKLineGraphView (GestureEvent) implementation //> k 线图分类  点击事件处理 实现
@@ -248,15 +250,51 @@
 #pragma mark - 重绘
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
+    
+    // 绘制时间轴
+    UIBezierPath *sepreateLine = [UIBezierPath bezierPath];
+    CGPoint sepreateP = CGPointMake(rect.origin.x, self.sectionBottom);
+    [sepreateLine moveToPoint:sepreateP];
+    sepreateP.x += rect.size.width;
+    [sepreateLine addLineToPoint:sepreateP];
+    sepreateP.y += 20;
+    [sepreateLine moveToPoint:sepreateP];
+    sepreateP.x -= rect.size.width;
+    [sepreateLine addLineToPoint:sepreateP];
+    
+    [[UIColor lightGrayColor] set];
+    [sepreateLine stroke];
+    
+    
+    NSDictionary *attrVOL = @{
+                              NSFontAttributeName : [UIFont systemFontOfSize:9],
+                              NSForegroundColorAttributeName : [UIColor whiteColor],
+                              };
+    [@"VOL" drawInRect:CGRectMake(5, sepreateP.y + 2, 30, 30) withAttributes:attrVOL];
+    
+    
+    
     // 懒加载计算
     [[self p_getKLinePaths] enumerateObjectsUsingBlock:^(_LYColorBezierPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj.strokeColor set];
-        [obj stroke];
-        // 是否需要填充
-        if ([self shouldFillKLinePath]) {
+        if (idx % 2) {
+            [obj.strokeColor set];
+            [obj stroke];
+            // 是否需要填充
+            if ([self shouldFillKLinePath]) {
+                [obj fill];
+            }
+
+        }else {
+            [obj.strokeColor set];
             [obj fill];
         }
     }];
+    
+    
+   
+    
+    // 绘制交易量
+    
     
     
     // 显示当前点击的价格详细
@@ -323,11 +361,13 @@
         
         [showPath moveToPoint:CGPointMake(self.longPress.longPressPoint.x,  p.y + dateSize.height)];
         
-        [showPath addLineToPoint:CGPointMake(self.longPress.longPressPoint.x, self.sectionBottom)];
+        [showPath addLineToPoint:CGPointMake(self.longPress.longPressPoint.x, rect.origin.y + rect.size.height)];
         
         [[UIColor whiteColor] set];
         [showPath stroke];
     }
+    
+    
     
 }
 
@@ -372,6 +412,8 @@
     __block CGFloat bottom;
     
     NSMutableArray *tempArrayM = [NSMutableArray array];
+    
+    CGFloat vol_sacle =  (self.bounds.size.height - self.sectionBottom - 20 - 15) / self.maxVOL;
     
     // 从右到左绘制
     [self.models enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(LYTimeTrendModel * _Nonnull timeTrend, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -420,16 +462,29 @@
         if (right > self.sectionRight) {
             right = self.sectionRight;
         }
-        
         // 添加 K 线柱状 路径
         [kKinePath addLineToPoint:CGPointMake(left, bottom)];
         [kKinePath addLineToPoint:CGPointMake(left, top)];
         [kKinePath addLineToPoint:CGPointMake(right, top)];
         [kKinePath addLineToPoint:CGPointMake(right, bottom)];
         [kKinePath addLineToPoint:CGPointMake(vernierX, bottom)];
+        
+        [tempArrayM addObject:kKinePath];
+        
+        _LYColorBezierPath *kVOLPath = [_LYColorBezierPath bezierPath];
+        kVOLPath.strokeColor = fillColor;
+        
+        [kVOLPath moveToPoint:CGPointMake(left, self.bounds.size.height)];
+        [kVOLPath addLineToPoint:CGPointMake(right, self.bounds.size.height)];
+        CGFloat vol_top = self.bounds.size.height - timeTrend .volume * vol_sacle;
+        [kVOLPath addLineToPoint:CGPointMake(right, vol_top)];
+        [kVOLPath addLineToPoint:CGPointMake(left, vol_top)];
+        
+        [tempArrayM addObject:kVOLPath];
+        
         // 偏移一个长度
         vernierX -= graphW;
-        [tempArrayM addObject:kKinePath];
+        
     }];
     
     _kLinePaths = [NSArray arrayWithArray:tempArrayM];
@@ -477,11 +532,15 @@
     
     // 计算出最高价和最低价
     __block CGFloat max_price = 0;
-    __block CGFloat min_price = 0;
+    __block CGFloat min_price = HUGE;
+    __block CGFloat max_vol   = 0;
     [array enumerateObjectsUsingBlock:^(LYTimeTrendModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         max_price = MAX(obj.highestPrice, max_price);
         min_price = MIN(obj.bottomPrice, min_price);
+        max_vol   = MAX(obj.volume, max_vol);
     }];
+    
+    self.maxVOL = max_vol;
     
     CGFloat top_bottom_space = 0;
     
@@ -489,7 +548,7 @@
                                             atScreenHeight:self.sectionBottom - self.contentInsets.top
                                                     margin:&top_bottom_space];
     
-    [self addjustSectionYValueWithScale:scaleY offsetValue:top_bottom_space * scaleY];
+    [self addjustSectionYValueWithScale:scaleY offsetValue:min_price - top_bottom_space * scaleY];
 }
 
 #pragma mark - publick mothod //> 对外接口

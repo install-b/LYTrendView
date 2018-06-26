@@ -12,9 +12,9 @@
 
 - (void)initSetUps {
     [super initSetUps];
-    self.contentInsets = UIEdgeInsetsMake(0, 2, 0, 2);
+    self.contentInsets = UIEdgeInsetsMake(0, 1, 80, 1);
     
-    UIColor *sectionColor = [UIColor lightGrayColor];
+    UIColor *sectionColor = [UIColor darkGrayColor];
     self.sectionXColor = sectionColor;
     self.sectionYColor = sectionColor;
     self.sectionXSegmentType = LYSectionSegmentTypeDashed;
@@ -30,7 +30,7 @@
     self.axesZBorderWidth = 1.0f;
     self.axesTBorderWidth = 1.0f;
     
-    self.insetsBackgroundColor = [UIColor colorWithRed:0.15 green:0.20 blue:0.20 alpha:0.98];
+    self.backgroundColor = [UIColor colorWithRed:0.15 green:0.20 blue:0.20 alpha:0.98];
 }
 
 @end

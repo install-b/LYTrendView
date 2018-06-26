@@ -13,7 +13,8 @@
 
 /* <#des#> */
 @property (nonatomic,weak) LYDemoKLineGraphView * kLineGraphView;
-
+/* <#des#> */
+@property (nonatomic,weak) UIView * kLineGraphSectionView;
 @end
 
 
@@ -23,8 +24,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor darkGrayColor];
     
+    [self kLineGraphSectionView];
+    
     // 添加k线数据
     [self.kLineGraphView appendTimeTrendModel:[self models]];
+    
 }
 
 #pragma mark - LYKLineGraphViewDelegate
@@ -32,7 +36,7 @@
     return 4;
 }
 - (NSUInteger)numberOfSectionXForTrendView:(LYTrendView *)trendView {
-    return 6;
+    return 7;
 }
 - (NSUInteger)numberOfSectionZForTrendView:(LYTrendView *)trendView {
     return 0;
@@ -62,7 +66,7 @@
 #pragma mark - kLineGraphView
 - (LYDemoKLineGraphView *)kLineGraphView {
     if (!_kLineGraphView) {
-        LYDemoKLineGraphView *kLineGraphView = [[LYDemoKLineGraphView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 280)];
+        LYDemoKLineGraphView *kLineGraphView = [[LYDemoKLineGraphView alloc] initWithFrame:CGRectMake(0, 128, self.view.bounds.size.width, 280)];
         
         [self.view addSubview:kLineGraphView];
         kLineGraphView.kLineGraphDelegate = self;
@@ -72,19 +76,34 @@
     return _kLineGraphView;
 }
 
+- (UIView *)kLineGraphSectionView {
+    if (!_kLineGraphSectionView) {
+        UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 88, self.view.bounds.size.width, 40)];
+        sectionView.backgroundColor = [UIColor colorWithWhite:0.12 alpha:0.98];
+        [self.view addSubview:sectionView];
+        
+        _kLineGraphSectionView = sectionView;
+    }
+    return _kLineGraphSectionView;
+}
+
+
+
 #pragma mark - data source
 - (NSArray <LYTimeTrendModel *>*)models {
     NSArray *data = [self kLineModesData];
     NSMutableArray *arrayM = [NSMutableArray arrayWithCapacity:data.count];
+    
+    CGFloat fix = 0.12 ;
     [data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         LYTimeTrendModel *model = [[LYTimeTrendModel alloc] init];
         [arrayM addObject:model];
         
-        model.highestPrice = [obj[@"highestPrice"] doubleValue];
-        model.bottomPrice = [obj[@"bottomPrice"] doubleValue];
-        model.openPrice = [obj[@"openPrice"] doubleValue];
-        model.closingPrice = [obj[@"closingPrice"] doubleValue];
-        
+        model.highestPrice = [obj[@"highestPrice"] doubleValue] + fix*idx;
+        model.bottomPrice = [obj[@"bottomPrice"] doubleValue] + fix*idx;
+        model.openPrice = [obj[@"openPrice"] doubleValue] + fix*idx;
+        model.closingPrice = [obj[@"closingPrice"] doubleValue] + fix*idx;
+        model.volume = (rand() % 300) + 1;
     }];
     
     return [NSArray arrayWithArray:arrayM];
@@ -202,10 +221,10 @@
                  @"closingPrice"  : @"20.2333",
                  },
              @{
-                 @"highestPrice"  : @"20.2312",
+                 @"highestPrice"  : @"29.2312",
                  @"bottomPrice"   : @"17.4023",
                  @"openPrice"     : @"20.3232",
-                 @"closingPrice"  : @"19.2233",
+                 @"closingPrice"  : @"27.2233",
                  },
              @{
                  @"highestPrice"  : @"40.4312",
@@ -317,16 +336,16 @@
                  @"closingPrice"  : @"19.2233",
                  },
              @{
-                 @"highestPrice"  : @"21.2312",
+                 @"highestPrice"  : @"30.2312",
                  @"bottomPrice"   : @"18.1023",
-                 @"openPrice"     : @"19.3232",
-                 @"closingPrice"  : @"20.2333",
+                 @"openPrice"     : @"20.3232",
+                 @"closingPrice"  : @"28.2333",
                  },
              @{
-                 @"highestPrice"  : @"20.2312",
-                 @"bottomPrice"   : @"17.4023",
-                 @"openPrice"     : @"20.3232",
-                 @"closingPrice"  : @"19.2233",
+                 @"highestPrice"  : @"35.2312",
+                 @"bottomPrice"   : @"20.4023",
+                 @"openPrice"     : @"23.3232",
+                 @"closingPrice"  : @"33.2233",
                  },
              @{
                  @"highestPrice"  : @"40.4312",
