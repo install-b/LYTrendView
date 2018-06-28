@@ -103,7 +103,7 @@
         model.bottomPrice = [obj[@"bottomPrice"] doubleValue] + fix*idx;
         model.openPrice = [obj[@"openPrice"] doubleValue] + fix*idx;
         model.closingPrice = [obj[@"closingPrice"] doubleValue] + fix*idx;
-        model.volume = (rand() % 300) + 1;
+        model.volume = (rand() % 300)* (idx+ 1) + 1;
     }];
     
     return [NSArray arrayWithArray:arrayM];
