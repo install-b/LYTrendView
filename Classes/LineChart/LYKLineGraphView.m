@@ -270,6 +270,7 @@
                               NSFontAttributeName : [UIFont systemFontOfSize:9],
                               NSForegroundColorAttributeName : [UIColor whiteColor],
                               };
+    
     [@"VOL" drawInRect:CGRectMake(5, sepreateP.y + 2, 30, 30) withAttributes:attrVOL];
     
     
@@ -277,24 +278,20 @@
     // 懒加载计算
     [[self p_getKLinePaths] enumerateObjectsUsingBlock:^(_LYColorBezierPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx % 2) {
+            // 交易量 填充
+            [obj.strokeColor set];
+            [obj fill];
+        }else {
+            // k线图 填充
             [obj.strokeColor set];
             [obj stroke];
             // 是否需要填充
             if ([self shouldFillKLinePath]) {
                 [obj fill];
             }
-
-        }else {
-            [obj.strokeColor set];
-            [obj fill];
+            
         }
     }];
-    
-    
-   
-    
-    // 绘制交易量
-    
     
     
     // 显示当前点击的价格详细
@@ -310,30 +307,33 @@
                                };
         
         // 当前价格
-        NSString *priceStr = [self p_priceStringWithPrice:[self sectionYValueFormPointY:self.longPress.longPressPoint.y]];
+        NSString *priceStr = [self p_titleForHorizoalWithPressModel:self.longPress];
         
-        CGSize priceSize = [priceStr sizeWithAttributes:attr];
+        if (priceStr) {
+            CGSize priceSize = [priceStr sizeWithAttributes:attr];
+            
+            priceSize.width += (textSpace * 2);
+            
+            CGPoint p1 = CGPointMake(self.sectionLeft + price_offset, self.longPress.longPressPoint.y - 0.5 * priceSize.height);
+            CGPoint p2 = CGPointMake(p1.x, self.longPress.longPressPoint.y + 0.5 * priceSize.height);
+            CGPoint p3 = CGPointMake(p1.x + priceSize.width, p2.y);
+            CGPoint p4 = CGPointMake(p3.x, p1.y);
+            // 显示价格
+            [priceStr drawInRect:CGRectMake(p1.x + textSpace, p1.y, priceSize.width, priceSize.height) withAttributes:attr];
+            
+            // 横轴
+            [showPath moveToPoint:p1];
+            [showPath addLineToPoint:p2];
+            [showPath addLineToPoint:p3];
+            [showPath addLineToPoint:p4];
+            [showPath addLineToPoint:p1];
+            [showPath moveToPoint:CGPointMake(p3.x, self.longPress.longPressPoint.y)];
+            [showPath addLineToPoint:CGPointMake(self.sectionRight, self.longPress.longPressPoint.y)];
+        }
         
-        priceSize.width += (textSpace * 2);
-        
-        CGPoint p1 = CGPointMake(self.sectionLeft + price_offset, self.longPress.longPressPoint.y - 0.5 * priceSize.height);
-        CGPoint p2 = CGPointMake(p1.x, self.longPress.longPressPoint.y + 0.5 * priceSize.height);
-        CGPoint p3 = CGPointMake(p1.x + priceSize.width, p2.y);
-        CGPoint p4 = CGPointMake(p3.x, p1.y);
-        // 显示价格
-        [priceStr drawInRect:CGRectMake(p1.x + textSpace, p1.y, priceSize.width, priceSize.height) withAttributes:attr];
-        
-        // 横轴
-        [showPath moveToPoint:p1];
-        [showPath addLineToPoint:p2];
-        [showPath addLineToPoint:p3];
-        [showPath addLineToPoint:p4];
-        [showPath addLineToPoint:p1];
-        [showPath moveToPoint:CGPointMake(p3.x, self.longPress.longPressPoint.y)];
-        [showPath addLineToPoint:CGPointMake(self.sectionRight, self.longPress.longPressPoint.y)];
         
         // 竖轴
-        NSString *dateStr = [self p_getShowDateString];
+        NSString *dateStr = [self p_getShowDateStringWithPressModel:self.longPress];
         
         
         CGSize dateSize = [dateStr sizeWithAttributes:attr];
@@ -372,14 +372,24 @@
 }
 
 #pragma mark - private method  //> 内部方法
-- (NSString *)p_priceStringWithPrice:(CGFloat)price {
-    if ([self.kLineGraphDelegate respondsToSelector:@selector(kLineGraphView:priceStringWhenTouchWithPrice:)]) {
-        return [self.kLineGraphDelegate kLineGraphView:self priceStringWhenTouchWithPrice:price];
+
+- (NSString *)p_titleForHorizoalWithPressModel:(_LYLongPressPoint *)lpy {
+    CGFloat py = lpy.longPressPoint.y;
+    if (py < self.sectionBottom) {
+        
+        CGFloat price = [self sectionYValueFormPointY:py];
+        if ([self.kLineGraphDelegate respondsToSelector:@selector(kLineGraphView:priceStringWhenTouchWithPrice:)]) {
+            return [self.kLineGraphDelegate kLineGraphView:self priceStringWhenTouchWithPrice:price];
+        }
+        return [NSString stringWithFormat:@"%.4f",price];
+    }else if (py > self.sectionBottom + 20) {
+        return [NSString stringWithFormat:@"%d",(int)lpy.model.volume];
     }
-   return [NSString stringWithFormat:@"%.4f",price];
+    
+    return nil;
 }
-- (NSString *)p_getShowDateString {
-    LYTimeTrendModel *model = self.longPress.model;
+- (NSString *)p_getShowDateStringWithPressModel:(_LYLongPressPoint *)lpy {
+    LYTimeTrendModel *model = lpy.model;
     NSString *str = nil;
     if ([self.kLineGraphDelegate respondsToSelector:@selector(kLineGraphView:dateStringWhenTouchWithModel:atSectionOffset:)]) {
         str = [self.kLineGraphDelegate kLineGraphView:self dateStringWhenTouchWithModel:model atSectionOffset:self.longPress.offsetIndex];
@@ -390,6 +400,8 @@
     
     return str;
 }
+
+
 
 // 获取k线 路径 懒加载
 - (NSArray <_LYColorBezierPath *>*)p_getKLinePaths {
