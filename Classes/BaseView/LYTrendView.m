@@ -525,7 +525,7 @@ static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spac
     
     CGFloat scaleX = _sectionXWidth / _sectionXValue ;
     
-    CGFloat x = self.originalPoint.x + (valuePoint.x + valueOffset.x) * scaleX ;
+    CGFloat x = self.originalPoint.x + (valuePoint.x - valueOffset.x) * scaleX ;
     CGFloat y = self.originalPoint.y - (valuePoint.y - valueOffset.y) * scaleY ;
     return CGPointMake(x,y);
 }

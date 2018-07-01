@@ -46,7 +46,7 @@ typedef void(^LYDrawingTitleBlock)(void);
             if (idx) {
                 line.smooth ? [path ly_addSmoothLineToPoint:p] : [path addLineToPoint:p];
             }else {
-                [path moveToPoint:p];
+                line.smooth ? [path ly_moveToPoint:p] : [path moveToPoint:p];
             }
             
             // collect dot bezier path
@@ -128,7 +128,7 @@ typedef void(^LYDrawingTitleBlock)(void);
             if (idx) {
                 line.smooth ? [path ly_addSmoothLineToPoint:p] : [path addLineToPoint:p];
             }else {
-                [path moveToPoint:p];
+                line.smooth ? [path ly_moveToPoint:p] : [path moveToPoint:p];
             }
         }];
         CAShapeLayer  *animLayer = [CAShapeLayer layer];

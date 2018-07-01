@@ -670,13 +670,13 @@
 }
 - (UIColor *)increaseColor {
     if (!_increaseColor) {
-        _increaseColor = [UIColor colorWithRed:0.03 green:0.96 blue:0.06 alpha:0.99];
+        _increaseColor = [UIColor colorWithRed:0.1 green:1 blue:0.2 alpha:1];
     }
     return _increaseColor;
 }
 - (UIColor *)declineColor {
     if (!_declineColor) {
-        _declineColor =[UIColor colorWithRed:0.9 green:0.06 blue:0.03 alpha:0.99];
+        _declineColor =[UIColor colorWithRed:1 green:0.2 blue:0.1 alpha:1];
     }
     return _declineColor;
 }

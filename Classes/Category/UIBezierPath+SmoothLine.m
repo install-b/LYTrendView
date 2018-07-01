@@ -16,17 +16,21 @@ static CGPoint controlPoint(CGPoint,CGPoint);
 #pragma mark -  UIBezierPath category implementation
 @implementation UIBezierPath (SmoothLine)
 #pragma mark  method_exchange
-+ (void)initialize {
-     // 黑魔法 交换
-    Method moveToPointM = class_getInstanceMethod(self,@selector(moveToPoint:));
-    Method ly_moveToPointM = class_getInstanceMethod(self,@selector(ly_moveToPoint:));
-    method_exchangeImplementations(moveToPointM,ly_moveToPointM);
-}
+//+ (void)initialize {
+//     // 黑魔法 交换
+//    Method moveToPointM = class_getInstanceMethod(self,@selector(moveToPoint:));
+//    Method ly_moveToPointM = class_getInstanceMethod(self,@selector(ly_moveToPoint:));
+//    method_exchangeImplementations(moveToPointM,ly_moveToPointM);
+//}
 
 - (void)ly_moveToPoint:(CGPoint)point {
-    [self ly_moveToPoint:point];
+    [self moveToPoint:point];
     [self setLastPoint:point];
 }
+//- (void)ly_moveToPoint:(CGPoint)point {
+//    [self ly_moveToPoint:point];
+//    [self setLastPoint:point];
+//}
 #pragma mark add property
 - (void)setLastPoint:(CGPoint)point {
     id lastP = [NSValue valueWithCGPoint:point];

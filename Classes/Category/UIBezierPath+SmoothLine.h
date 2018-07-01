@@ -16,4 +16,12 @@
  @param toPoint 终点
  */
 - (void)ly_addSmoothLineToPoint:(CGPoint)toPoint;
+
+
+/**
+ 调用 ‘ly_addSmoothLineToPoint:’ 之前需要用 ‘ly_moveToPoint:’ 代替 ‘moveToPoint’
+
+ @param point 需要移动到的点
+ */
+- (void)ly_moveToPoint:(CGPoint)point;
 @end
