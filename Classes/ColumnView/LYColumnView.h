@@ -18,6 +18,8 @@
 
 - (void)addBackgoundColor:(UIColor *)color atSection:(NSUInteger)section;
 - (void)removeBackgoundColorAtSection:(NSUInteger)section;
+
+- (CGFloat)equalColoumWidthAtSection:(NSUInteger)section;
 @end
 
 

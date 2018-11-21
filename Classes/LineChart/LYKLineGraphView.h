@@ -10,15 +10,25 @@
 
 #import "LYLineChartView.h"
 
-
+/**
+ * K线图 类型
+ */
+typedef enum : NSInteger {
+    LYKLineGraphViewTypeDefault,  // 常规  只展示K线
+    LYKLineGraphViewTypeVOL,      // VOL交易量
+    LYKLineGraphViewTypeMACD,     // MACD （待完善）
+    LYKLineGraphViewTypeKDJ,      // KDJ  （待完善）
+    LYKLineGraphViewTypeRSI       // RSI  （待完善）
+} LYKLineGraphViewType;
 
 /**
  k 线 时间价格走势模型
  */
 @interface LYTimeTrendModel : NSObject
-/* 时间 */
+/* 时间 s */
 @property (nonatomic,assign) CGFloat timeZone;
-
+/* <#des#> */
+@property (nonatomic,assign) NSRange timeRange;
 /* 最高价 */
 @property (nonatomic,assign) CGFloat highestPrice;
 /* 最低价 */
@@ -44,7 +54,8 @@
  k 线视图
  */
 @interface LYKLineGraphView : LYLineChartView
-
+// 刷新最新的数据
+- (void)updateTimeTrendModel:(NSArray <LYTimeTrendModel *>*)models;
 // 添加数据源
 - (void)appendTimeTrendModel:(NSArray <LYTimeTrendModel *>*)models;
 - (void)insertTimeTrendModel:(NSArray <LYTimeTrendModel *>*)models;
@@ -55,6 +66,9 @@
 // 需要遵循 K线代理 协议
 - (void)setDelegate:(id<LYTrendViewDelegate>)delegate NS_UNAVAILABLE;
 @property (weak) id<LYKLineGraphViewDelegate> kLineGraphDelegate;
+
+/* K线图类型  默认为default  */
+@property (nonatomic,assign) LYKLineGraphViewType kLineType;
 
 
 /* 柱状图之间的间隙 默认为 3 */
@@ -67,6 +81,12 @@
 /* 下降的颜色 默认为红色 */
 @property (nonatomic,strong) UIColor * declineColor;
 
+// 
+- (NSAttributedString *)drawSectionXTitleAtPoint:(CGPoint)sectionXpoint lastObjec:(LYTimeTrendModel *)lastObjc offset:(CGFloat)offset;
+/**
+ 长按 显示点击的交叉线 颜色 默认白色
+ */
+- (UIColor *)acrossLineColor;
 
 /**
  是否需要填充K线柱状图 默认为YES  不需要填充子类可返回NO

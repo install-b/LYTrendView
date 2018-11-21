@@ -31,4 +31,8 @@
 - (CGFloat)sectionValueZ {
     return 0;
 }
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"X= %f Y=%f",_point.x,_point.y];
+}
 @end

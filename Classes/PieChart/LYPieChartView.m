@@ -139,13 +139,20 @@ static CGFloat fullCricleAngle = M_PI * 2;
         
         [pieModels enumerateObjectsUsingBlock:^(LYPieModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CGFloat textY = (poinSize + margin) * idx + topOffset;
-            UIBezierPath *dotPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(dotX, textY + dotFix, dotWH, dotWH) cornerRadius:dotRadius];
+            CGRect dotRect = CGRectMake(dotX, textY + dotFix, dotWH, dotWH);
+            UIBezierPath *dotPath = [UIBezierPath bezierPathWithRoundedRect:dotRect cornerRadius:dotRadius];
             [obj.pieColor set];
             [dotPath fill];
             if (obj.itemNameAttr) {
                 [obj.itemNameAttr drawAtPoint:CGPointMake(textX, textY)];
             }else {
                 [obj.itemName drawAtPoint:CGPointMake(textX, textY) withAttributes:self.annotationAttribute];
+            }
+            if (self.annotationType == LYPieChartAnnotationTypeHollow) {
+               UIBezierPath *inner =   [UIBezierPath bezierPath];
+                [inner addArcWithCenter:CGPointMake(CGRectGetMidX(dotRect), CGRectGetMidY(dotRect)) radius:0.5 * dotRadius startAngle:0 endAngle:M_PI * 2 clockwise:YES];
+                [self.inCircleColor set];
+                [inner fill];
             }
             
         }];
@@ -273,7 +280,7 @@ static CGFloat fullCricleAngle = M_PI * 2;
 - (NSDictionary<NSAttributedStringKey,id> *)annotationAttribute {
     if (!_annotationAttribute) {
         _annotationAttribute =@{
-                                NSFontAttributeName :[UIFont systemFontOfSize:13] ,
+                                NSFontAttributeName :[UIFont systemFontOfSize:12] ,
                                 NSForegroundColorAttributeName : [UIColor darkTextColor],
                                 //NSBackgroundColorAttributeName : [UIColor yellowColor]
                                 };

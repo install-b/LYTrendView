@@ -106,12 +106,15 @@ typedef void(^DrawingTitleBlock)(void);
         
         
         attributesDict = self.attributesSectionYDict;
+        // 0
+        [self drawSectionYTitleAtPoint:CGPointMake(left, bottom) section:0];
         for (NSInteger i = 0; i < rowY; i++) {
             
             
             tempSectionY = bottom - (i + 1) * spaceY;
             CGFloat rightP = left;
-            [sectionYPath moveToPoint:CGPointMake(rightP, tempSectionY)];
+            CGPoint sectionYPoint = CGPointMake(rightP, tempSectionY);
+            [sectionYPath moveToPoint:sectionYPoint];
             
             switch (self.sectionYSegmentType) {
                 case LYSectionSegmentTypeScale:
@@ -124,7 +127,7 @@ typedef void(^DrawingTitleBlock)(void);
                     CGFloat length = right - left;
                     CGFloat solidLength = [self solidLengthOfSectionZDashedFormLineWith:length atSection:i];
                     CGFloat spaceLength = [self spaceLengthOfSectionZDashedFormLineWith:length atSection:i];
-                    NSInteger number = dashLineNumber(length,solidLength,spaceLength);
+                    NSInteger number = ly_dashLineNumber(length,solidLength,spaceLength);
                     
                     for (NSInteger i = 0; i < number; i++) {
                         rightP += solidLength;
@@ -152,6 +155,8 @@ typedef void(^DrawingTitleBlock)(void);
                     [sectionTitle drawInRect:rect withAttributes:attributesDict];
                 }
             }
+            // 绘制标题  给子类实现
+            [self drawSectionYTitleAtPoint:sectionYPoint section:i+1];
         }
         if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionY:)]) {
             sectionTitle = [self.delegate trendView:self titleForSectionY:rowY];
@@ -188,14 +193,17 @@ typedef void(^DrawingTitleBlock)(void);
         CGFloat titleW = self.sectionZSpace;
     
         attributesDict = self.attributesSectionZDict;
+        // 0
+        [self drawSectionZTitleAtPoint:CGPointMake(right, bottom) section:0];
         for (NSInteger i = 0; i < rowZ; i++) {
             tempSectionZ = bottom - (i + 1) * spaceZ;
             CGFloat leftP = right;
             
+            CGPoint sectionZPoint = CGPointMake(leftP, tempSectionZ);
             // 描点
-            [sectionZPath moveToPoint:CGPointMake(leftP, tempSectionZ)];
+            [sectionZPath moveToPoint:sectionZPoint];
             
-            switch (self.sectionYSegmentType) {
+            switch (self.sectionZSegmentType) {
                 case LYSectionSegmentTypeScale:  // 刻度
                     leftP -= scaleLenth;
                     break;
@@ -207,7 +215,7 @@ typedef void(^DrawingTitleBlock)(void);
                         
                         leftP = right;
                         
-                        NSInteger number = dashLineNumber(length,solidLength,spaceLength);
+                        NSInteger number = ly_dashLineNumber(length,solidLength,spaceLength);
                         
                         for (NSInteger i = 0; i < number; i++) {
                             leftP -= solidLength;
@@ -225,6 +233,7 @@ typedef void(^DrawingTitleBlock)(void);
             // 连线
             [sectionZPath addLineToPoint:CGPointMake(leftP, tempSectionZ)];
             
+            
             if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionZ:)]) {
                 sectionTitle = [self.delegate trendView:self titleForSectionZ:i];
                 if (sectionTitle.length) {
@@ -233,6 +242,8 @@ typedef void(^DrawingTitleBlock)(void);
                     [sectionTitle drawInRect:rect withAttributes:attributesDict];
                 }
             }
+            // 绘制标题  给子类实现
+            [self drawSectionZTitleAtPoint:sectionZPoint section:i+1];
         }
         if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionZ:)]) {
             sectionTitle = [self.delegate trendView:self titleForSectionZ:rowZ];
@@ -270,10 +281,15 @@ typedef void(^DrawingTitleBlock)(void);
         CGFloat tempSectionX = 0;
         CGFloat titleY = bottom;
         attributesDict = self.attributesSectionXDict;
+        
+        // 0
+        [self drawSectionXTitleAtPoint:CGPointMake(left, bottom) section:0];
+        
         for (NSInteger i = 0; i < rowX; i++) {
             tempSectionX = left + (i + 1) * spaceX;
             CGFloat topP = bottom;
-            [sectionXPath moveToPoint:CGPointMake(tempSectionX, bottom)];
+            CGPoint sectionXpoint = CGPointMake(tempSectionX, bottom);
+            [sectionXPath moveToPoint:sectionXpoint];
             
             switch (self.sectionXSegmentType) {
                 case LYSectionSegmentTypeScale:
@@ -287,7 +303,7 @@ typedef void(^DrawingTitleBlock)(void);
                        CGFloat solidLength = [self solidLengthOfSectionZDashedFormLineWith:length atSection:i];
                        CGFloat spaceLength = [self spaceLengthOfSectionZDashedFormLineWith:length atSection:i];
                       
-                       NSInteger number = dashLineNumber(length,solidLength,spaceLength);
+                       NSInteger number = ly_dashLineNumber(length,solidLength,spaceLength);
                     
                        for (NSInteger i = 0; i < number; i++) {
                            topP -= solidLength;
@@ -305,12 +321,15 @@ typedef void(^DrawingTitleBlock)(void);
             }
             // 连线到顶端
             [sectionXPath addLineToPoint:CGPointMake(tempSectionX, topP)];
-
-    
+            
+            
+            
             if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionX:)]) {
                 sectionTitle = [self.delegate trendView:self titleForSectionX:i];
                 [sectionTitle drawAtPoint:CGPointMake(tempSectionX - spaceX,titleY)withAttributes:attributesDict];
             }
+            // 绘制标题  给子类实现
+            [self drawSectionXTitleAtPoint:sectionXpoint section:i + 1];
         }
 
         if ([self.delegate respondsToSelector:@selector(trendView:titleForSectionX:)]) {
@@ -360,17 +379,18 @@ typedef void(^DrawingTitleBlock)(void);
     [axesZPath stroke];
 }
 
-// 
-static NSInteger dashLineNumber(CGFloat length,CGFloat solidLength, CGFloat spaceLength) {
-    CGFloat perLenth = solidLength + spaceLength;
-    CGFloat tempNumber = length/perLenth;
-    NSInteger number = (NSInteger)tempNumber;
-    if ((tempNumber - number) * perLenth > solidLength) {
-        number += 1;
-    }
-    return number;
-}
 
+
+#pragma mark - sub class implementation method
+- (void)drawSectionXTitleAtPoint:(CGPoint)sectionXpoint section:(NSInteger)index {
+    // sub class implementation...
+}
+- (void)drawSectionYTitleAtPoint:(CGPoint)sectionYpoint section:(NSInteger)index{
+    // sub class implementation...
+}
+- (void)drawSectionZTitleAtPoint:(CGPoint)sectionZpoint section:(NSInteger)index{
+    // sub class implementation...
+}
 #pragma mark - pravit method
 
 - (CGRect)titleRectWithTitle:(NSString *)title attributs:(NSDictionary <NSString *,id>*)attributs fromRect:(CGRect)rect {

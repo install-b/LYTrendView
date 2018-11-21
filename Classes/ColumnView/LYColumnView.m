@@ -62,8 +62,13 @@
        
         NSUInteger sectionIndex = [selfDelegate columnView:self numberOfColumnAtSetion:section];
         
-        CGFloat indexSpace = self.spaceX / (sectionIndex + 1);
-        
+        CGFloat indexSpace = self.spaceX / (sectionIndex + 1) ;
+        CGFloat colomMargin = 0;
+        CGFloat colomWith = [self equalColoumWidthAtSection:section];
+        if (sectionIndex > 0 && colomWith) {
+            
+            colomMargin = (self.spaceX - colomWith * sectionIndex) / (sectionIndex + 1);
+        }
         for (NSUInteger index = 0; index < sectionIndex; index++) {
             LYColumn *column = [selfDelegate columnView:self columnAtIndexPath:[NSIndexPath indexPathForRow:index inSection:section]];
             
@@ -73,7 +78,11 @@
 
             CGFloat bottom = self.sectionBottom;
             CGFloat top    = bottom - columnHeight;
-            CGFloat left   = indexSpace * (index + 1) - 0.5 * column.columnWidth + self.spaceX * section + self.sectionLeft;
+            CGFloat left   = (colomMargin) ?
+            ( colomWith * index + colomMargin * (index + 1)) :
+            (indexSpace * (index + 1) - 0.5 * column.columnWidth + self.spaceX * section + self.sectionLeft);
+            
+            
             CGFloat right  = left + column.columnWidth;
             
             UIBezierPath *path = [[UIBezierPath alloc] init];
@@ -102,6 +111,9 @@
     
 }
 
+- (CGFloat)equalColoumWidthAtSection:(NSUInteger)section {
+    return 0;
+}
 
 - (void)addBackgoundColor:(UIColor *)color atSection:(NSUInteger)section {
     [self.seclectionColorDictM setObject:color forKey:@(section)];

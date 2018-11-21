@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #include "LYTendMath.h"
+#import "LYTrendUIFunc.h"
 #import "LYChartBaseView.h"
 
 typedef NS_ENUM(NSInteger,LYSectionSegmentType) {
@@ -42,7 +43,7 @@ typedef double LYTrendValue;
 /** section Z value size default is 1.0 */
 @property(nonatomic,assign) CGFloat sectionZValue;
 
-/* <#des#> */
+// origin position
 @property (nonatomic,assign) CGPoint originYValueOffset;
 @property (nonatomic,assign) CGPoint originZValueOffset;
 
@@ -102,23 +103,31 @@ typedef double LYTrendValue;
 
 /** axesY originX */
 @property(nonatomic,assign,readonly) CGFloat sectionLeft ;
-/** axesY originX */
+/** axesY originY */
 @property(nonatomic,assign,readonly) CGFloat sectionBottom ;
-/** <#des#> */
+/** axesZ originX */
 @property(nonatomic,assign,readonly) CGFloat sectionRight ;
-///** <#des#> */
-//@property(nonatomic,assign,readonly) CGFloat sectionTop ;
-/** <#des#> */
+// sectionTop using contentInsets.top instead
+//@property(nonatomic,assign,readonly) CGFloat sectionTop;
+
+
+/** space for X */
 @property(nonatomic,assign,readonly) CGFloat spaceX ;
-/** <#des#> */
+/** space for Y */
 @property(nonatomic,assign,readonly) CGFloat spaceY ;
-/** <#des#> */
+/** space for Z */
 @property(nonatomic,assign,readonly) CGFloat spaceZ ;
 
 /** sectionYLabelText */
 @property (nonatomic,copy)NSString * sectionYLabelText;
 /** sectionYLabelText */
 @property (nonatomic,copy)NSString * sectionZLabelText;
+
+
+// draw section title implement by sub class. it called before draw section line
+- (void)drawSectionXTitleAtPoint:(CGPoint)sectionXpoint section:(NSInteger)index ;
+- (void)drawSectionYTitleAtPoint:(CGPoint)sectionYpoint section:(NSInteger)index;
+- (void)drawSectionZTitleAtPoint:(CGPoint)sectionZpoint section:(NSInteger)index;
 
 @end
 

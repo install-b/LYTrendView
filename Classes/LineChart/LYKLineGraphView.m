@@ -251,36 +251,40 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    // 绘制时间轴
-    UIBezierPath *sepreateLine = [UIBezierPath bezierPath];
-    CGPoint sepreateP = CGPointMake(rect.origin.x, self.sectionBottom);
-    [sepreateLine moveToPoint:sepreateP];
-    sepreateP.x += rect.size.width;
-    [sepreateLine addLineToPoint:sepreateP];
-    sepreateP.y += 20;
-    [sepreateLine moveToPoint:sepreateP];
-    sepreateP.x -= rect.size.width;
-    [sepreateLine addLineToPoint:sepreateP];
-    
-    [[UIColor lightGrayColor] set];
-    [sepreateLine stroke];
-    
-    
-    NSDictionary *attrVOL = @{
-                              NSFontAttributeName : [UIFont systemFontOfSize:9],
-                              NSForegroundColorAttributeName : [UIColor whiteColor],
-                              };
-    
-    [@"VOL" drawInRect:CGRectMake(5, sepreateP.y + 2, 30, 30) withAttributes:attrVOL];
-    
+    if (self.kLineType == LYKLineGraphViewTypeVOL) {
+        // 绘制时间轴
+        UIBezierPath *sepreateLine = [UIBezierPath bezierPath];
+        CGPoint sepreateP = CGPointMake(rect.origin.x, self.sectionBottom);
+        [sepreateLine moveToPoint:sepreateP];
+        sepreateP.x += rect.size.width;
+        [sepreateLine addLineToPoint:sepreateP];
+        sepreateP.y += 20;
+        [sepreateLine moveToPoint:sepreateP];
+        sepreateP.x -= rect.size.width;
+        [sepreateLine addLineToPoint:sepreateP];
+        
+        [[UIColor lightGrayColor] set];
+        [sepreateLine stroke];
+        
+        
+        NSDictionary *attrVOL = @{
+                                  NSFontAttributeName : [UIFont systemFontOfSize:9],
+                                  NSForegroundColorAttributeName : [UIColor whiteColor],
+                                  };
+        
+        [@"VOL" drawInRect:CGRectMake(5, sepreateP.y + 2, 30, 30) withAttributes:attrVOL];
+    }
     
     
     // 懒加载计算
     [[self p_getKLinePaths] enumerateObjectsUsingBlock:^(_LYColorBezierPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx % 2) {
-            // 交易量 填充
-            [obj.strokeColor set];
-            [obj fill];
+            if (self.kLineType) {
+                // 交易量 填充
+                [obj.strokeColor set];
+                [obj fill];
+            }
+            
         }else {
             // k线图 填充
             [obj.strokeColor set];
@@ -299,11 +303,11 @@
 #define price_offset 0
 #define date_offset 5
 #define textSpace  5
-
+        UIColor *acrossColor = [self acrossLineColor];
         UIBezierPath *showPath = [UIBezierPath bezierPath];
         NSDictionary *attr = @{
                                NSFontAttributeName : [UIFont systemFontOfSize:11],
-                               NSForegroundColorAttributeName : [UIColor whiteColor],
+                               NSForegroundColorAttributeName : acrossColor,
                                };
         
         // 当前价格
@@ -363,14 +367,36 @@
         
         [showPath addLineToPoint:CGPointMake(self.longPress.longPressPoint.x, rect.origin.y + rect.size.height)];
         
-        [[UIColor whiteColor] set];
+        [acrossColor set];
         [showPath stroke];
     }
     
-    
-    
 }
 
+- (UIColor *)acrossLineColor {
+    return [UIColor whiteColor];
+}
+
+- (void)drawSectionXTitleAtPoint:(CGPoint)sectionXpoint section:(NSInteger)index  {
+    CGFloat offset =  (self.sectionRight - sectionXpoint.x + _horizontalOffset) / (_graphMargin + _graphWidth);
+    LYTimeTrendModel *model = _models.lastObject;
+    
+    NSAttributedString *showTitle = [self drawSectionXTitleAtPoint:sectionXpoint lastObjec:model offset:offset];
+    if (showTitle.length) {
+        if (index == 0) {
+            [showTitle drawAtPoint:CGPointMake(sectionXpoint.x, sectionXpoint.y + 5)];
+        }else if (index == [self.delegate numberOfSectionXForTrendView:self]) {
+         
+            [showTitle drawAtPoint:CGPointMake(sectionXpoint.x - showTitle.size.width, sectionXpoint.y + 5)];
+        }else {
+            [showTitle drawAtPoint:CGPointMake(sectionXpoint.x - showTitle.size.width * 0.5, sectionXpoint.y + 5)];
+        }
+        
+    }
+}
+- (NSAttributedString *)drawSectionXTitleAtPoint:(CGPoint)sectionXpoint lastObjec:(LYTimeTrendModel *)lastObjc offset:(CGFloat)offset {
+    return nil;
+}
 #pragma mark - private method  //> 内部方法
 
 - (NSString *)p_titleForHorizoalWithPressModel:(_LYLongPressPoint *)lpy {
@@ -505,6 +531,7 @@
 }
 
 
+
 - (NSArray <LYTimeTrendModel *>*)p_getCurrentVisibleArray {
     CGFloat length = self.sectionRight - self.sectionLeft;
     if (length <= 0) {
@@ -581,6 +608,14 @@
         [self setNeedsDisplay];
     }
 }
+- (void)updateTimeTrendModel:(NSArray <LYTimeTrendModel *>*)models {
+    _models = nil;
+     _kLinePaths = nil;
+    _horizontalOffset = 0;
+    _models = models.copy;
+    // 刷新界面
+    [self setNeedsDisplay];
+}
 
 - (void)removeTimeTrendModelToIndex:(NSUInteger)index {
     NSUInteger count = _models.count;
@@ -612,6 +647,7 @@
         _models = [_models subarrayWithRange:range];
     }
     _kLinePaths = nil;
+    
     // 刷新界面
     [self setNeedsDisplay];
 }
