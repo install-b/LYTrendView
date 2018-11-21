@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
  
 
   s.name         = "LYTrendView"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "an iOS chart and column view"
   s.description  = "a simple Chart  line (column 、 pie) view for iOS. (简单的iOS柱状、曲线图图、饼图)"
 
